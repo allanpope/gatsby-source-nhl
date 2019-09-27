@@ -1,0 +1,14 @@
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "test/**/*.ts"],
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./lib",
+    "declaration": true
+  }
+}

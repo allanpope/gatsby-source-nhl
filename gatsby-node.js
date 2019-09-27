@@ -1,6 +1,2 @@
-const fetch = require("node-fetch")
-
-exports.sourceNodes = (
-  { actions, createNodeId, createContentDigest },
-  configOptions
-) => {}
+// Proxy to TypeScript-compiled output
+module.exports = require("./lib/gatsby-node")
