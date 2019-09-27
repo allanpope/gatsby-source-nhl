@@ -21,6 +21,7 @@
   "repository": "https://github.com/allanpope/gatsby-source-nhl.git",
   "license": "MIT",
   "dependencies": {
+    "@types/node-fetch": "^2.5.2",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
