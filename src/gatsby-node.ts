@@ -1,11 +1,7 @@
 import { SourceNodesArgs } from "gatsby"
 
-import { getTeamData } from "./nhl-api"
-
-interface Team {
-  id: number
-  name: string
-}
+import { getTeamsData } from "./nhl-api"
+import { Team } from "./types/nhl-team"
 
 export const sourceNodes = async (
   { actions, createNodeId, createContentDigest }: SourceNodesArgs,
@@ -13,7 +9,7 @@ export const sourceNodes = async (
 ) => {
   const { createNode } = actions
 
-  const data = await getTeamData()
+  const data = await getTeamsData()
 
   data.teams.map((team: Team) => {
     const nodeId = createNodeId(`team-${team.id}`)
@@ -22,6 +18,13 @@ export const sourceNodes = async (
     createNode({
       id: nodeId,
       name: team.name,
+      abbreviation: team.abbreviation,
+      teamName: team.teamName,
+      shortName: team.shortName,
+      locationName: team.locationName,
+      firstYearOfPlay: team.firstYearOfPlay,
+      officialSiteUrl: team.officialSiteUrl,
+      active: team.active,
       internal: {
         type: `NHLTeam`,
         content: nodeContent,
