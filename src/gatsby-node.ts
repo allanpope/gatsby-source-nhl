@@ -12,11 +12,23 @@ export const sourceNodes = async (
   const data = await getTeamsData()
 
   data.teams.map((team: Team) => {
-    const nodeId = createNodeId(`team-${team.id}`)
-    const nodeContent = JSON.stringify(team)
+    const venueNodeId = createNodeId(`venue-${team.venue.id}`)
+    const teamNodeId = createNodeId(`team-${team.id}`)
 
     createNode({
-      id: nodeId,
+      id: venueNodeId,
+      name: team.venue.name,
+      city: team.venue.city,
+      team___NODE: teamNodeId,
+      internal: {
+        type: `NHLVenue`,
+        content: JSON.stringify(team.venue),
+        contentDigest: createContentDigest(team.venue),
+      },
+    })
+
+    createNode({
+      id: teamNodeId,
       name: team.name,
       abbreviation: team.abbreviation,
       teamName: team.teamName,
@@ -25,9 +37,10 @@ export const sourceNodes = async (
       firstYearOfPlay: team.firstYearOfPlay,
       officialSiteUrl: team.officialSiteUrl,
       active: team.active,
+      venue___NODE: venueNodeId,
       internal: {
         type: `NHLTeam`,
-        content: nodeContent,
+        content: JSON.stringify(team),
         contentDigest: createContentDigest(team),
       },
     })

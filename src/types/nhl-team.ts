@@ -1,5 +1,11 @@
+interface TimeZone {
+  zone: string
+  offset: number
+  tz: string
+}
+
 export interface Team {
-  id: number
+  id: string
   abbreviation: string
   name: string
   teamName: string
@@ -8,4 +14,13 @@ export interface Team {
   firstYearOfPlay: string
   officialSiteUrl: string
   active: boolean
+  venue: Venue
+}
+
+export interface Venue {
+  id: string
+  name: string
+  city: string
+  timezone: TimeZone
+  team: Team
 }
