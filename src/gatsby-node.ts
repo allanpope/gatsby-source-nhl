@@ -19,6 +19,11 @@ export const sourceNodes = async (
       id: venueNodeId,
       name: team.venue.name,
       city: team.venue.city,
+      timeZone: {
+        zone: team.venue.timeZone.id,
+        offset: team.venue.timeZone.offset,
+        tz: team.venue.timeZone.tz,
+      },
       team___NODE: teamNodeId,
       internal: {
         type: `NHLVenue`,

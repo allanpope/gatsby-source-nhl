@@ -1,5 +1,5 @@
 interface TimeZone {
-  zone: string
+  id: string
   offset: number
   tz: string
 }
@@ -21,6 +21,6 @@ export interface Venue {
   id: string
   name: string
   city: string
-  timezone: TimeZone
+  timeZone: TimeZone
   team: Team
 }
