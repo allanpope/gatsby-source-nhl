@@ -31,15 +31,15 @@ interface Venue {
 
 interface Division {
   id: string;
-  name: string;
-  nameShort: string;
-  abbreviation: string;
+  name: 'Metropolitan' | 'Atlantic' | 'Central' | 'Pacific';
+  nameShort: 'Metro' | 'ATL' | 'CEN' | 'PAC';
+  abbreviation: 'M' | 'A' | 'C' | 'P';
   teams: [Team];
 }
 
 interface Conference {
   id: string;
-  name: string;
+  name: 'Eastern' | 'Western';
   teams: [Team];
 }
 
@@ -65,7 +65,7 @@ interface Person {
 }
 
 interface Position {
-  name: string;
-  type: string;
-  abbreviation: string;
+  name: 'Goalie' | 'Defenseman' | 'Center' | 'Right Wing' | 'Left Wing';
+  type: 'Goalie' | 'Defenseman' | 'Forward';
+  abbreviation: 'C' | 'D' | 'C' | 'R' | 'L';
 }
