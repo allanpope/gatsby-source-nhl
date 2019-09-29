@@ -18,6 +18,7 @@ export interface Team {
   division: Division;
   conference: Conference;
   franchise: Franchise;
+  roster: Roster;
 }
 
 interface Venue {
@@ -46,4 +47,25 @@ interface Franchise {
   franchiseId: string;
   teamName: string;
   team: Team;
+}
+
+interface Roster {
+  roster: [RosterItem];
+}
+
+interface RosterItem {
+  jerseyNumber: number;
+  person: Person;
+  position: Position;
+}
+
+interface Person {
+  id: string;
+  fullName: string;
+}
+
+interface Position {
+  name: string;
+  type: string;
+  abbreviation: string;
 }

@@ -24,6 +24,22 @@ export const sourceNodes = async (
     const venueNodeId = createNodeId(`venue-${team.venue.id}`);
     const teamNodeId = createNodeId(`team-${team.id}`);
 
+    team.roster.roster.map(item => {
+      // Player
+      createNode({
+        id: createNodeId(`player-${item.person.id}`),
+        fullName: item.person.fullName,
+        team___NODE: teamNodeId,
+        internal: {
+          type: `NHLPlayer`,
+          content: JSON.stringify(item.person),
+          contentDigest: createContentDigest(item.person),
+        },
+      });
+    });
+
+    // ---
+
     // Franchise
     createNode({
       id: franchiseNodeId,
@@ -65,6 +81,9 @@ export const sourceNodes = async (
       firstYearOfPlay: team.firstYearOfPlay,
       officialSiteUrl: team.officialSiteUrl,
       active: team.active,
+      ['Player___NODE']: team.roster.roster.map(item =>
+        createNodeId(`player-${item.person.id}`),
+      ),
       division___NODE: divisionNodeId,
       conference___NODE: conferenceNodeId,
       venue___NODE: venueNodeId,
