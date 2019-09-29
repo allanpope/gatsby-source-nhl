@@ -81,7 +81,7 @@ export const sourceNodes = async (
       firstYearOfPlay: team.firstYearOfPlay,
       officialSiteUrl: team.officialSiteUrl,
       active: team.active,
-      ['Player___NODE']: team.roster.roster.map(item =>
+      ['players___NODE']: team.roster.roster.map(item =>
         createNodeId(`player-${item.person.id}`),
       ),
       division___NODE: divisionNodeId,
@@ -101,7 +101,7 @@ export const sourceNodes = async (
       name: team.division.name,
       nameShort: team.division.nameShort,
       abbreviation: team.division.abbreviation,
-      ['team___NODE']: divisions[team.division.name].map(team =>
+      ['teams___NODE']: divisions[team.division.name].map(team =>
         createNodeId(`team-${team.id}`),
       ),
       internal: {
@@ -115,7 +115,7 @@ export const sourceNodes = async (
     createNode({
       id: conferenceNodeId,
       name: team.conference.name,
-      ['team___NODE']: conferences[team.conference.name].map(team =>
+      ['teams___NODE']: conferences[team.conference.name].map(team =>
         createNodeId(`team-${team.id}`),
       ),
       internal: {
