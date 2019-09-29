@@ -58,6 +58,10 @@ export const sourceNodes = async (
       createNode({
         id: playerNodeId,
         fullName: item.person.fullName,
+        images: {
+          headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${item.person.id}@3x.jpg`,
+          action: `https://nhl.bamcontent.com/images/actionshots/${item.person.id}@3x.jpg`,
+        },
         team___NODE: teamNodeId,
         position___NODE: createNodeId(`position-${item.position.name}`),
         internal: {
@@ -125,6 +129,12 @@ export const sourceNodes = async (
       firstYearOfPlay: team.firstYearOfPlay,
       officialSiteUrl: team.officialSiteUrl,
       active: team.active,
+      images: {
+        logo: {
+          primary_light: `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`,
+          primary_dark: `https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/${team.id}.svg`,
+        },
+      },
       ['players___NODE']: team.roster.roster.map(item =>
         createNodeId(`player-${item.person.id}`),
       ),
