@@ -4,6 +4,10 @@ interface TimeZone {
   tz: string;
 }
 
+export interface Teams {
+  teams: Team[];
+}
+
 export interface Team {
   id: string;
   abbreviation: string;
