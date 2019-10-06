@@ -49,11 +49,11 @@ interface Franchise {
   team: Team;
 }
 
-interface Roster {
+export interface Roster {
   roster: [RosterItem];
 }
 
-interface RosterItem {
+export interface RosterItem {
   jerseyNumber: number;
   person: Person;
   position: Position;
@@ -63,9 +63,8 @@ interface Person {
   id: string;
   fullName: string;
 }
-
-interface Position {
-  name: 'Goalie' | 'Defenseman' | 'Center' | 'Right Wing' | 'Left Wing';
-  type: 'Goalie' | 'Defenseman' | 'Forward';
-  abbreviation: 'C' | 'D' | 'C' | 'R' | 'L';
+export interface Position {
+  name: string;
+  type: string;
+  abbreviation: string;
 }
