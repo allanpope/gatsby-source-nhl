@@ -1,11 +1,16 @@
 import { SourceNodesArgs } from 'gatsby';
 
 import { getTeamsData } from './nhl-api';
-import createNodesForTeams from './create-nodes-for-teams';
+import createPositionNodes from './create-position-nodes';
+import createRosterNodes from './create-roster-nodes';
+import createTeamNodes from './create-team-nodes';
 import { Teams } from './types/nhl-team';
 
 export const sourceNodes = async (createNodeHelpers: SourceNodesArgs) => {
   const { teams }: Teams = await getTeamsData();
+  const { createNode } = createNodeHelpers.actions;
 
-  createNodesForTeams(teams, createNodeHelpers);
+  createPositionNodes(teams, createNode, createNodeHelpers);
+  createRosterNodes(teams, createNode, createNodeHelpers);
+  createTeamNodes(teams, createNode, createNodeHelpers);
 };

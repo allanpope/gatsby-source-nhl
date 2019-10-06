@@ -1,82 +1,9 @@
-import { groupBy, flattenDeep } from 'lodash';
+import { groupBy } from 'lodash';
 import { SourceNodesArgs } from 'gatsby';
 
-import { Team, Position, Roster, RosterItem } from './types/nhl-team';
-import positions from './positions';
+import { Team } from './types/nhl-team';
 
-const createRoster = (
-  roster: Roster,
-  teamId: number | string,
-  createNode: Function,
-  createNodeId: Function,
-  createContentDigest: Function,
-) => {
-  roster.roster.map((rosterItem: RosterItem) => {
-    // Player
-    createNode({
-      ...rosterItem.person,
-      id: createNodeId(rosterItem.person.id),
-      externalId: rosterItem.person.id,
-      images: {
-        headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${rosterItem.person.id}@3x.jpg`,
-        action: `https://nhl.bamcontent.com/images/actionshots/${rosterItem.person.id}@3x.jpg`,
-      },
-      team___NODE: teamId,
-      position___NODE: createNodeId(rosterItem.position.name),
-      internal: {
-        type: `NHLPlayer`,
-        content: JSON.stringify(rosterItem.person),
-        contentDigest: createContentDigest(rosterItem.person),
-      },
-    });
-
-    // Roster
-    createNode({
-      id: createNodeId(rosterItem.person.id),
-      externalId: rosterItem.person.id,
-      jerseyNumber: rosterItem.jerseyNumber,
-      player___NODE: createNodeId(rosterItem.person.id),
-      team___NODE: teamId,
-      position___NODE: createNodeId(rosterItem.position.name),
-      internal: {
-        type: `NHLRoster`,
-        content: JSON.stringify(rosterItem),
-        contentDigest: createContentDigest(rosterItem),
-      },
-    });
-  });
-};
-
-const createPositions = (
-  teams: Team[],
-  createNode: Function,
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
-  const allRosterItems: RosterItem[] = flattenDeep(
-    teams.map((team: Team) => team.roster.roster),
-  );
-
-  positions.map((position: Position) => {
-    const filteredRosterItems = allRosterItems.filter((item: RosterItem) => {
-      return item.position.name === position.name;
-    });
-
-    createNode({
-      ...position,
-      id: createNodeId(position.name),
-      players___NODE: filteredRosterItems.map((rosterItem: RosterItem) =>
-        createNodeId(rosterItem.person.id),
-      ),
-      internal: {
-        type: `NHLPosition`,
-        content: JSON.stringify(position),
-        contentDigest: createContentDigest(position),
-      },
-    });
-  });
-};
-
-const createTeams = (
+const createTeamNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
@@ -94,14 +21,6 @@ const createTeams = (
       const divisionNodeId = createNodeId(division.id);
       const venueNodeId = createNodeId(venue.name);
       const teamNodeId = createNodeId(team.id);
-
-      createRoster(
-        roster,
-        teamNodeId,
-        createNode,
-        createNodeId,
-        createContentDigest,
-      );
 
       // Franchise
       createNode({
@@ -186,14 +105,4 @@ const createTeams = (
   );
 };
 
-const createNodesForTeams = (
-  teams: Team[],
-  createNodeHelpers: SourceNodesArgs,
-) => {
-  const { createNode } = createNodeHelpers.actions;
-
-  createPositions(teams, createNode, createNodeHelpers);
-  createTeams(teams, createNode, createNodeHelpers);
-};
-
-export default createNodesForTeams;
+export default createTeamNodes;
