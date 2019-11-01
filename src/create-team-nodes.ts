@@ -1,5 +1,6 @@
 import { groupBy } from 'lodash';
 import { SourceNodesArgs } from 'gatsby';
+import slugify from 'slugify';
 
 import { Team } from './types/nhl-team';
 
@@ -26,6 +27,7 @@ const createTeamNodes = (
       createNode({
         ...franchise,
         id: franchiseNodeId,
+        slug: slugify(franchise.teamName, { lower: true }),
         externalId: franchise.franchiseId,
         team___NODE: teamNodeId,
         internal: {
@@ -53,6 +55,7 @@ const createTeamNodes = (
         ...team,
         id: teamNodeId,
         externalId: team.id,
+        slug: slugify(team.name, { lower: true }),
         images: {
           logo: {
             primary_light: `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`,
@@ -77,6 +80,7 @@ const createTeamNodes = (
         ...division,
         id: divisionNodeId,
         externalId: division.id,
+        slug: slugify(division.name, { lower: true }),
         teams___NODE: teamsByDivisions[division.name].map(team =>
           createNodeId(team.id),
         ),
@@ -92,6 +96,7 @@ const createTeamNodes = (
         ...conference,
         id: conferenceNodeId,
         externalId: conference.id,
+        slug: slugify(conference.name, { lower: true }),
         teams___NODE: teamsByConferences[conference.name].map(team =>
           createNodeId(team.id),
         ),

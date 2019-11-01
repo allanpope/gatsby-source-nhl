@@ -1,5 +1,6 @@
 import { SourceNodesArgs } from 'gatsby';
 import { flattenDeep } from 'lodash';
+import slugify from 'slugify';
 
 import { Team, Position, RosterItem } from './types/nhl-team';
 import positions from './positions';
@@ -21,6 +22,7 @@ const createPositionNodes = (
     createNode({
       ...position,
       id: createNodeId(position.name),
+      slug: slugify(position.name, { lower: true }),
       players___NODE: filteredRosterItems.map((rosterItem: RosterItem) =>
         createNodeId(rosterItem.person.id),
       ),

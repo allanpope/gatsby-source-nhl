@@ -10,6 +10,7 @@ export interface Teams {
 
 export interface Team {
   id: string;
+  slug: string;
   abbreviation: string;
   name: string;
   teamName: string;
@@ -35,6 +36,7 @@ interface Venue {
 
 interface Division {
   id: string;
+  slug: string;
   name: 'Metropolitan' | 'Atlantic' | 'Central' | 'Pacific';
   nameShort: 'Metro' | 'ATL' | 'CEN' | 'PAC';
   abbreviation: 'M' | 'A' | 'C' | 'P';
@@ -43,6 +45,7 @@ interface Division {
 
 interface Conference {
   id: string;
+  slug: string;
   name: 'Eastern' | 'Western';
   teams: [Team];
 }
@@ -51,6 +54,7 @@ interface Franchise {
   franchiseId: string;
   teamName: string;
   team: Team;
+  slug: string;
 }
 
 export interface Roster {
@@ -69,6 +73,7 @@ interface Person {
 }
 export interface Position {
   name: string;
+  slug: string;
   type: string;
   abbreviation: string;
 }
