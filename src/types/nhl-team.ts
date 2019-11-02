@@ -70,10 +70,10 @@ export interface RosterItem {
 interface Person {
   id: string;
   fullName: string;
+  slug: string;
 }
 export interface Position {
   name: string;
-  slug: string;
   type: string;
   abbreviation: string;
 }

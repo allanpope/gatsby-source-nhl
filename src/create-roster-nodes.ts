@@ -1,4 +1,5 @@
 import { SourceNodesArgs } from 'gatsby';
+import slugify from 'slugify';
 
 import { Team, RosterItem } from './types/nhl-team';
 
@@ -14,6 +15,7 @@ const createRosterNodes = (
         ...rosterItem.person,
         id: createNodeId(rosterItem.person.id),
         externalId: rosterItem.person.id,
+        slug: slugify(rosterItem.person.fullName, { lower: true }),
         images: {
           headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${rosterItem.person.id}@3x.jpg`,
           action: `https://nhl.bamcontent.com/images/actionshots/${rosterItem.person.id}@3x.jpg`,
