@@ -1,59 +1,17 @@
-import { groupBy } from 'lodash';
 import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 
 import { Team } from './types/nhl-team';
 
-const createTeamNodes = (
+const createDivisionNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
-  const teamsByDivisions = groupBy(teams, (team: Team) => team.division.name);
-  const teamsByConferences = groupBy(
-    teams,
-    (team: Team) => team.conference.name,
-  );
-
   teams.map(
     ({ franchise, venue, division, roster, conference, ...team }: Team) => {
-      const franchiseNodeId = createNodeId(franchise.franchiseId);
-      const conferenceNodeId = createNodeId(conference.id);
-      const divisionNodeId = createNodeId(division.id);
-      const venueNodeId = createNodeId(venue.name);
-      const teamNodeId = createNodeId(team.id);
-
-      // Franchise
       createNode({
-        id: franchiseNodeId,
-        slug: slugify(franchise.teamName, { lower: true }),
-        externalId: franchise.franchiseId,
-        team___NODE: teamNodeId,
-        internal: {
-          type: `NHLFranchise`,
-          content: JSON.stringify(franchise),
-          contentDigest: createContentDigest(franchise),
-        },
-      });
-
-      // Venue
-      createNode({
-        id: venueNodeId,
-        externalId: venue.id,
-        name: venue.name,
-        city: venue.city,
-        timeZone: venue.timeZone,
-        team___NODE: teamNodeId,
-        internal: {
-          type: `NHLVenue`,
-          content: JSON.stringify(venue),
-          contentDigest: createContentDigest(venue),
-        },
-      });
-
-      // Team
-      createNode({
-        id: teamNodeId,
+        id: createNodeId(team.id),
         externalId: team.id,
         name: team.name,
         abbreviation: team.abbreviation,
@@ -72,52 +30,18 @@ const createTeamNodes = (
         },
         players___NODE: roster.roster.map(item => createNodeId(item.person.id)),
         roster___NODE: roster.roster.map(item => createNodeId(item.person.id)),
-        division___NODE: divisionNodeId,
-        conference___NODE: conferenceNodeId,
-        venue___NODE: venueNodeId,
-        franchise___NODE: franchiseNodeId,
+        division___NODE: createNodeId(division.id),
+        conference___NODE: createNodeId(conference.id),
+        venue___NODE: createNodeId(venue.name),
+        franchise___NODE: createNodeId(franchise.franchiseId),
         internal: {
           type: `NHLTeam`,
           content: JSON.stringify(team),
           contentDigest: createContentDigest(team),
         },
       });
-
-      // Division
-      createNode({
-        id: divisionNodeId,
-        externalId: division.id,
-        name: division.name,
-        nameShort: division.nameShort,
-        abbreviation: division.abbreviation,
-        slug: slugify(division.name, { lower: true }),
-        teams___NODE: teamsByDivisions[division.name].map(team =>
-          createNodeId(team.id),
-        ),
-        internal: {
-          type: `NHLDivision`,
-          content: JSON.stringify(division),
-          contentDigest: createContentDigest(division),
-        },
-      });
-
-      // Conference
-      createNode({
-        id: conferenceNodeId,
-        externalId: conference.id,
-        name: conference.name,
-        slug: slugify(conference.name, { lower: true }),
-        teams___NODE: teamsByConferences[conference.name].map(team =>
-          createNodeId(team.id),
-        ),
-        internal: {
-          type: `NHLConference`,
-          content: JSON.stringify(conference),
-          contentDigest: createContentDigest(conference),
-        },
-      });
     },
   );
 };
 
-export default createTeamNodes;
+export default createDivisionNodes;
