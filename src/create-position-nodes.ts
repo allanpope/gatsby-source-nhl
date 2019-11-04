@@ -20,8 +20,10 @@ const createPositionNodes = (
     });
 
     createNode({
-      ...position,
       id: createNodeId(position.name),
+      name: position.name,
+      type: position.type,
+      abbreviation: position.abbreviation,
       slug: slugify(position.name, { lower: true }),
       players___NODE: filteredRosterItems.map((rosterItem: RosterItem) =>
         createNodeId(rosterItem.person.id),

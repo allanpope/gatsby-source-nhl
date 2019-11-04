@@ -25,7 +25,6 @@ const createTeamNodes = (
 
       // Franchise
       createNode({
-        ...franchise,
         id: franchiseNodeId,
         slug: slugify(franchise.teamName, { lower: true }),
         externalId: franchise.franchiseId,
@@ -39,9 +38,11 @@ const createTeamNodes = (
 
       // Venue
       createNode({
-        ...venue,
         id: venueNodeId,
         externalId: venue.id,
+        name: venue.name,
+        city: venue.city,
+        timeZone: venue.timeZone,
         team___NODE: teamNodeId,
         internal: {
           type: `NHLVenue`,
@@ -52,9 +53,16 @@ const createTeamNodes = (
 
       // Team
       createNode({
-        ...team,
         id: teamNodeId,
         externalId: team.id,
+        name: team.name,
+        abbreviation: team.abbreviation,
+        teamName: team.teamName,
+        locationName: team.locationName,
+        firstYearOfPlay: team.firstYearOfPlay,
+        shortName: team.shortName,
+        officialSiteUrl: team.officialSiteUrl,
+        active: team.active,
         slug: slugify(team.name, { lower: true }),
         images: {
           logo: {
@@ -77,9 +85,11 @@ const createTeamNodes = (
 
       // Division
       createNode({
-        ...division,
         id: divisionNodeId,
         externalId: division.id,
+        name: division.name,
+        nameShort: division.nameShort,
+        abbreviation: division.abbreviation,
         slug: slugify(division.name, { lower: true }),
         teams___NODE: teamsByDivisions[division.name].map(team =>
           createNodeId(team.id),
@@ -93,9 +103,9 @@ const createTeamNodes = (
 
       // Conference
       createNode({
-        ...conference,
         id: conferenceNodeId,
         externalId: conference.id,
+        name: conference.name,
         slug: slugify(conference.name, { lower: true }),
         teams___NODE: teamsByConferences[conference.name].map(team =>
           createNodeId(team.id),
