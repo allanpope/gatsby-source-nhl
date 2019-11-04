@@ -28,7 +28,6 @@ const createDivisionNodes = (
             primary_dark: `https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/${team.id}.svg`,
           },
         },
-        players___NODE: roster.roster.map(item => createNodeId(item.person.id)),
         roster___NODE: roster.roster.map(item => createNodeId(item.person.id)),
         division___NODE: createNodeId(division.id),
         conference___NODE: createNodeId(conference.id),
