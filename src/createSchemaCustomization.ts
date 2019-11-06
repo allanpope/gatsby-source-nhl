@@ -1,10 +1,12 @@
-const createSchemaCustomization = ({ actions }: any) => {
+import { SourceNodesArgs } from 'gatsby';
+
+const createSchemaCustomization = ({ actions }: SourceNodesArgs) => {
   const { createTypes } = actions;
 
   createTypes(`
     type NHLRosterItem implements Node {
       player: NHLPlayer @link,
-      position: NHLPosition @link,
+      position: NHLPosition @link(by: "name"),
       team: NHLTeam @link
     }
 
@@ -13,7 +15,7 @@ const createSchemaCustomization = ({ actions }: any) => {
     }
 
     type NHLPlayer implements Node {
-      position: NHLPosition @link
+      position: NHLPosition @link(by: "name")
       team: NHLTeam @link
     }
 

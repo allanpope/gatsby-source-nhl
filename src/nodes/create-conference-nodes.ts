@@ -20,7 +20,7 @@ const createConferenceNodes = (
       externalId: team.conference.id,
       name: team.conference.name,
       slug: slugify(team.conference.name, { lower: true }),
-      teams: teamsByConferences[team.conference.name].map((team: any) =>
+      teams: teamsByConferences[team.conference.name].map((team: Team) =>
         createNodeId(team.id),
       ),
       internal: {

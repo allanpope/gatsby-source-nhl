@@ -22,7 +22,6 @@ const createPositionNodes = (
     });
 
     createNode({
-      id: createNodeId(position.name),
       name: position.name,
       type: position.type,
       abbreviation: position.abbreviation,
