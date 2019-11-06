@@ -25,7 +25,7 @@ const createPositionNodes = (
       type: position.type,
       abbreviation: position.abbreviation,
       slug: slugify(position.name, { lower: true }),
-      players___NODE: filteredRosterItems.map((rosterItem: RosterItem) =>
+      players: filteredRosterItems.map((rosterItem: RosterItem) =>
         createNodeId(rosterItem.person.id),
       ),
       internal: {

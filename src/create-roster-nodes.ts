@@ -13,9 +13,9 @@ const createRosterNodes = (
         id: createNodeId(person.id),
         externalId: person.id,
         jerseyNumber: jerseyNumber,
-        player___NODE: createNodeId(person.id),
-        team___NODE: createNodeId(team.id),
-        position___NODE: createNodeId(position.name),
+        player: createNodeId(person.id),
+        team: createNodeId(team.id),
+        position: createNodeId(position.name),
         internal: {
           type: `NHLRosterItem`,
           content: JSON.stringify({ ...person, jerseyNumber, ...position }),

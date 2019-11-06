@@ -19,7 +19,7 @@ const createVenueNodes = (
       nameShort: team.division.nameShort,
       abbreviation: team.division.abbreviation,
       slug: slugify(team.division.name, { lower: true }),
-      teams___NODE: teamsByDivisions[team.division.name].map(team =>
+      teams: teamsByDivisions[team.division.name].map(team =>
         createNodeId(team.id),
       ),
       internal: {

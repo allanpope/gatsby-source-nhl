@@ -14,7 +14,7 @@ const createFranchiseNodes = (
       slug: slugify(team.franchise.teamName, { lower: true }),
       externalId: team.franchise.franchiseId,
       teamName: team.franchise.teamName,
-      team___NODE: createNodeId(team.id),
+      team: createNodeId(team.id),
       internal: {
         type: `NHLFranchise`,
         content: JSON.stringify(team.franchise),
