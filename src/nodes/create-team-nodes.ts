@@ -1,7 +1,7 @@
 import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 
-import { Team } from './types/nhl-team';
+import { Team } from '../types/team';
 
 const createDivisionNodes = (
   teams: Team[],

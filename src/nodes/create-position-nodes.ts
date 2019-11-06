@@ -2,8 +2,10 @@ import { SourceNodesArgs } from 'gatsby';
 import { flattenDeep } from 'lodash';
 import slugify from 'slugify';
 
-import { Team, Position, RosterItem } from './types/nhl-team';
-import positions from './positions';
+import { Team } from '../types/team';
+import { Position } from '../types/position';
+import { RosterItem } from '../types/roster';
+import positions from '../data/positions';
 
 const createPositionNodes = (
   teams: Team[],

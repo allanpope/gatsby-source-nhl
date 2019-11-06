@@ -1,6 +1,7 @@
 import { SourceNodesArgs } from 'gatsby';
 
-import { Team, RosterItem } from './types/nhl-team';
+import { Team } from '../types/team';
+import { RosterItem } from '../types/roster';
 
 const createRosterNodes = (
   teams: Team[],

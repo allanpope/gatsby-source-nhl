@@ -1,19 +1,19 @@
 import { SourceNodesArgs } from 'gatsby';
 
-import { getTeamsData } from './nhl-api';
-import createPlayerNodes from './create-player-nodes';
-import createRosterNodes from './create-roster-nodes';
-import createVenueNodes from './create-venue-nodes';
-import createDivisionNodes from './create-division-nodes';
-import createConferenceNodes from './create-conference-nodes';
-import createPositionNodes from './create-position-nodes';
-import createFranchiseNodes from './create-franchise-nodes';
-import createTeamNodes from './create-team-nodes';
+import { getTeamsData } from './data/nhl-api';
+import createPlayerNodes from './nodes/create-player-nodes';
+import createRosterNodes from './nodes/create-roster-nodes';
+import createVenueNodes from './nodes/create-venue-nodes';
+import createDivisionNodes from './nodes/create-division-nodes';
+import createConferenceNodes from './nodes/create-conference-nodes';
+import createPositionNodes from './nodes/create-position-nodes';
+import createFranchiseNodes from './nodes/create-franchise-nodes';
+import createTeamNodes from './nodes/create-team-nodes';
 
-import { Teams } from './types/nhl-team';
+import { Team } from './types/team';
 
 const sourceNodes = async (createNodeHelpers: SourceNodesArgs) => {
-  const { teams }: Teams = await getTeamsData();
+  const teams: [Team] = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 
   createRosterNodes(teams, createNode, createNodeHelpers);

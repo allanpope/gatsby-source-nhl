@@ -2,7 +2,7 @@ import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { Team } from './types/nhl-team';
+import { Team } from '../types/team';
 
 const createVenueNodes = (
   teams: Team[],

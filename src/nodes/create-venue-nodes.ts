@@ -1,6 +1,6 @@
 import { SourceNodesArgs } from 'gatsby';
 
-import { Team } from './types/nhl-team';
+import { Team } from '../types/team';
 
 const createVenueNodes = (
   teams: Team[],

@@ -1,7 +1,8 @@
 import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 
-import { Team, RosterItem } from './types/nhl-team';
+import { Team } from '../types/team';
+import { RosterItem } from '../types/roster';
 
 const createPlayerNodes = (
   teams: Team[],
