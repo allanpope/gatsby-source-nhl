@@ -1,4 +1,6 @@
-const createSchemaCustomization = ({ actions }: any) => {
+import { SourceNodesArgs } from 'gatsby';
+
+const createSchemaCustomization = ({ actions }: SourceNodesArgs) => {
   const { createTypes } = actions;
 
   createTypes(`
