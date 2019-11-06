@@ -28,11 +28,6 @@ const createDivisionNodes = (
             primary_dark: `https://www-league.nhlstatic.com/images/logos/teams-current-primary-dark/${team.id}.svg`,
           },
         },
-        roster___NODE: roster.roster.map(item => createNodeId(item.person.id)),
-        division___NODE: createNodeId(division.id),
-        conference___NODE: createNodeId(conference.id),
-        venue___NODE: createNodeId(venue.name),
-        franchise___NODE: createNodeId(franchise.franchiseId),
         internal: {
           type: `NHLTeam`,
           content: JSON.stringify(team),
