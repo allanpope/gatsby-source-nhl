@@ -1,6 +1,6 @@
 import { SourceNodesArgs } from 'gatsby';
 
-import { Team } from './types/nhl-team';
+import { Team } from '../types/team';
 
 const createVenueNodes = (
   teams: Team[],
@@ -14,7 +14,7 @@ const createVenueNodes = (
       name: team.venue.name,
       city: team.venue.city,
       timeZone: team.venue.timeZone,
-      team___NODE: createNodeId(team.id),
+      team: createNodeId(team.id),
       internal: {
         type: `NHLVenue`,
         content: JSON.stringify(team.venue),

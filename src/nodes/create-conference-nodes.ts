@@ -2,7 +2,7 @@ import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { Team } from './types/nhl-team';
+import { Team } from '../types/team';
 
 const createConferenceNodes = (
   teams: Team[],
@@ -20,7 +20,7 @@ const createConferenceNodes = (
       externalId: team.conference.id,
       name: team.conference.name,
       slug: slugify(team.conference.name, { lower: true }),
-      teams___NODE: teamsByConferences[team.conference.name].map((team: any) =>
+      teams: teamsByConferences[team.conference.name].map((team: any) =>
         createNodeId(team.id),
       ),
       internal: {

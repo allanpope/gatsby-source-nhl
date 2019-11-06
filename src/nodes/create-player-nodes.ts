@@ -1,7 +1,8 @@
 import { SourceNodesArgs } from 'gatsby';
 import slugify from 'slugify';
 
-import { Team, RosterItem } from './types/nhl-team';
+import { Team } from '../types/team';
+import { RosterItem } from '../types/roster';
 
 const createPlayerNodes = (
   teams: Team[],
@@ -19,8 +20,8 @@ const createPlayerNodes = (
           headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${person.id}@3x.jpg`,
           action: `https://nhl.bamcontent.com/images/actionshots/${person.id}@3x.jpg`,
         },
-        team___NODE: createNodeId(team.id),
-        position___NODE: createNodeId(position.name),
+        team: createNodeId(team.id),
+        position: createNodeId(position.name),
         internal: {
           type: `NHLPlayer`,
           content: JSON.stringify(person),
