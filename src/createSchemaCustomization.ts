@@ -6,7 +6,7 @@ const createSchemaCustomization = ({ actions }: SourceNodesArgs) => {
   createTypes(`
     type NHLRosterItem implements Node {
       player: NHLPlayer @link,
-      position: NHLPosition @link,
+      position: NHLPosition @link(by: "name"),
       team: NHLTeam @link
     }
 
@@ -15,7 +15,7 @@ const createSchemaCustomization = ({ actions }: SourceNodesArgs) => {
     }
 
     type NHLPlayer implements Node {
-      position: NHLPosition @link
+      position: NHLPosition @link(by: "name")
       team: NHLTeam @link
     }
 
