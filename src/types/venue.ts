@@ -1,5 +1,3 @@
-import { Team } from './team';
-
 interface TimeZone {
   id: string;
   offset: number;
@@ -7,9 +5,8 @@ interface TimeZone {
 }
 
 export interface Venue {
-  id: string;
+  id?: number;
   name: string;
   city: string;
   timeZone: TimeZone;
-  team: Team;
 }

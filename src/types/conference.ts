@@ -1,8 +1,4 @@
-import { Team } from './team';
-
 export interface Conference {
-  id: string;
-  slug: string;
+  id: number;
   name: 'Eastern' | 'Western';
-  teams: [Team];
 }

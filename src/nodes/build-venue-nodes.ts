@@ -1,4 +1,5 @@
 import { SourceNodesArgs } from 'gatsby';
+import { get } from 'lodash';
 
 import { Team } from '../types/team';
 
@@ -8,7 +9,7 @@ const buildVenueNodes = (
 ) => {
   return teams.map((team: Team) => ({
     id: createNodeId(team.venue.name),
-    externalId: team.venue.id,
+    externalId: get(team, 'venue.id'),
     name: team.venue.name,
     city: team.venue.city,
     timeZone: {

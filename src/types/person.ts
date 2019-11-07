@@ -1,5 +1,4 @@
 export interface Person {
-  id: string;
+  id: number;
   fullName: string;
-  slug: string;
 }
