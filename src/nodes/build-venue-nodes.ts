@@ -1,11 +1,11 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import { get } from 'lodash';
 
 import { Team } from '../types/team';
 
 const buildVenueNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
+  { createNodeId, createContentDigest }: NodePluginArgs,
 ) => {
   return teams.map((team: Team) => ({
     id: createNodeId(team.venue.name),

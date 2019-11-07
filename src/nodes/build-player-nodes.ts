@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { flatten } from 'lodash';
 
@@ -7,7 +7,7 @@ import { RosterItem } from '../types/roster';
 
 const buildPlayerNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
+  { createNodeId, createContentDigest }: NodePluginArgs,
 ) => {
   const players = teams.map((team: Team) =>
     team.roster.roster.map(({ person, position }: RosterItem) => ({

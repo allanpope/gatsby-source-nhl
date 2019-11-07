@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 
 import { getTeamsData } from './data/nhl-api';
 import buildPlayerNodes from './nodes/build-player-nodes';
@@ -12,7 +12,7 @@ import buildTeamNodes from './nodes/build-team-nodes';
 
 import { Team } from './types/team';
 
-const sourceNodes = async (createNodeHelpers: SourceNodesArgs) => {
+const sourceNodes = async (createNodeHelpers: NodePluginArgs) => {
   const teams: Team[] = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 

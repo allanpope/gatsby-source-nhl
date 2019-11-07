@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
@@ -6,7 +6,7 @@ import { Team } from '../types/team';
 
 const buildVenueNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
+  { createNodeId, createContentDigest }: NodePluginArgs,
 ) => {
   const teamsByDivisions = groupBy(teams, (team: Team) => team.division.name);
 

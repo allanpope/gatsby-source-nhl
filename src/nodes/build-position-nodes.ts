@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import { flattenDeep } from 'lodash';
 import slugify from 'slugify';
 
@@ -9,7 +9,7 @@ import positions from '../data/positions';
 
 const buildPositionNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
+  { createNodeId, createContentDigest }: NodePluginArgs,
 ) => {
   const allRosterItems: RosterItem[] = flattenDeep(
     teams.map((team: Team) => team.roster.roster),

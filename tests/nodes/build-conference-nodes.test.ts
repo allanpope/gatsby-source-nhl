@@ -2,12 +2,15 @@ import buildConferenceNodes from '../../src/nodes/build-conference-nodes';
 import teams from '../fixtures/teams';
 
 describe('buildConferenceNodes', () => {
-  const createNodeHelpers = {
-    createNodeId: jest.fn(),
-    createContentDigest: jest.fn(),
+  const createNodeHelpers: any = {
+    createNodeId: jest.fn(() => 'mock-id'),
+    createContentDigest: jest.fn(() => 'mock-digest'),
   };
 
   it('returns a object for each conference', () => {
-    expect(buildConferenceNodes(teams, createNodeHelpers).length).toEqual(2);
+    console.log(buildConferenceNodes(teams, createNodeHelpers));
+    expect(buildConferenceNodes(teams, createNodeHelpers).length).toHaveLength(
+      2,
+    );
   });
 });
