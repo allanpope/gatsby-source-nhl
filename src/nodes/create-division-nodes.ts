@@ -8,7 +8,7 @@ const createVenueNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   const teamsByDivisions = groupBy(teams, (team: Team) => team.division.name);
 
   teams.map((team: Team) => {

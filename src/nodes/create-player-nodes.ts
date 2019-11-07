@@ -8,7 +8,7 @@ const createPlayerNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   teams.map((team: Team) => {
     team.roster.roster.map(({ person, position }: RosterItem) => {
       createNode({

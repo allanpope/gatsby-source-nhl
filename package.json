@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "tsc",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build && npm test"
+    "prepublishOnly": "npm run build && npm test",
+    "lint": "tsc --noEmit && eslint src/**/*.ts"
   },
   "files": [
     "/lib"
@@ -28,6 +29,11 @@
     "slugify": "^1.3.5"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
