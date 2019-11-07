@@ -8,7 +8,7 @@ const createConferenceNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   const teamsByConferences = groupBy(
     teams,
     (team: Team) => team.conference.name,

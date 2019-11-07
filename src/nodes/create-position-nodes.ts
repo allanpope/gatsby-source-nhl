@@ -11,7 +11,7 @@ const createPositionNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   const allRosterItems: RosterItem[] = flattenDeep(
     teams.map((team: Team) => team.roster.roster),
   );

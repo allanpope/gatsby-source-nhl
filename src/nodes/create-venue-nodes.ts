@@ -6,7 +6,7 @@ const createVenueNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   teams.map((team: Team) => {
     createNode({
       id: createNodeId(team.venue.name),

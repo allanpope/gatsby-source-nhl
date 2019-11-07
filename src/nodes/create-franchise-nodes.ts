@@ -7,7 +7,7 @@ const createFranchiseNodes = (
   teams: Team[],
   createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+): void => {
   teams.map((team: Team) => {
     createNode({
       id: createNodeId(team.franchise.franchiseId),

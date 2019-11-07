@@ -13,7 +13,7 @@ import createTeamNodes from './nodes/create-team-nodes';
 import { Team } from './types/team';
 
 const sourceNodes = async (createNodeHelpers: SourceNodesArgs) => {
-  const teams: [Team] = await getTeamsData();
+  const teams: Team[] = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 
   createRosterNodes(teams, createNode, createNodeHelpers);
