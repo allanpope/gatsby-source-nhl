@@ -16,14 +16,18 @@ const sourceNodes = async (createNodeHelpers: SourceNodesArgs) => {
   const teams: Team[] = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 
-  createRosterNodes(teams, createNode, createNodeHelpers);
-  createPlayerNodes(teams, createNode, createNodeHelpers);
-  createVenueNodes(teams, createNode, createNodeHelpers);
-  createDivisionNodes(teams, createNode, createNodeHelpers);
-  createConferenceNodes(teams, createNode, createNodeHelpers);
-  createPositionNodes(teams, createNode, createNodeHelpers);
-  createFranchiseNodes(teams, createNode, createNodeHelpers);
-  createTeamNodes(teams, createNode, createNodeHelpers);
+  [
+    ...createRosterNodes(teams, createNodeHelpers),
+    ...createPlayerNodes(teams, createNodeHelpers),
+    ...createVenueNodes(teams, createNodeHelpers),
+    ...createDivisionNodes(teams, createNodeHelpers),
+    ...createConferenceNodes(teams, createNodeHelpers),
+    ...createPositionNodes(teams, createNodeHelpers),
+    ...createFranchiseNodes(teams, createNodeHelpers),
+    ...createTeamNodes(teams, createNodeHelpers),
+  ].map(node => {
+    createNode(node);
+  });
 };
 
 export default sourceNodes;

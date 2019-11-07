@@ -9,19 +9,18 @@ import positions from '../data/positions';
 
 const createPositionNodes = (
   teams: Team[],
-  createNode: Function,
   { createNodeId, createContentDigest }: SourceNodesArgs,
-): void => {
+) => {
   const allRosterItems: RosterItem[] = flattenDeep(
     teams.map((team: Team) => team.roster.roster),
   );
 
-  positions.map((position: Position) => {
+  return positions.map((position: Position) => {
     const filteredRosterItems = allRosterItems.filter((item: RosterItem) => {
       return item.position.name === position.name;
     });
 
-    createNode({
+    return {
       id: createNodeId(position.name),
       name: position.name,
       type: position.type,
@@ -35,7 +34,7 @@ const createPositionNodes = (
         content: JSON.stringify(position),
         contentDigest: createContentDigest(position),
       },
-    });
+    };
   });
 };
 
