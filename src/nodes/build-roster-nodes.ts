@@ -1,11 +1,10 @@
 import { SourceNodesArgs } from 'gatsby';
 import { flatten } from 'lodash';
-import { cre } from 'gatsby';
 
 import { Team } from '../types/team';
 import { RosterItem } from '../types/roster';
 
-const createRosterNodes = (
+const buildRosterNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -28,4 +27,4 @@ const createRosterNodes = (
   return flatten(rosterItems);
 };
 
-export default createRosterNodes;
+export default buildRosterNodes;

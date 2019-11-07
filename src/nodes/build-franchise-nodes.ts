@@ -3,7 +3,7 @@ import slugify from 'slugify';
 
 import { Team } from '../types/team';
 
-const createFranchiseNodes = (
+const buildFranchiseNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -21,4 +21,4 @@ const createFranchiseNodes = (
   }));
 };
 
-export default createFranchiseNodes;
+export default buildFranchiseNodes;

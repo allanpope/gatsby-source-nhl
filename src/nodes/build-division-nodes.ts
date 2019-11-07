@@ -4,7 +4,7 @@ import { groupBy } from 'lodash';
 
 import { Team } from '../types/team';
 
-const createVenueNodes = (
+const buildVenueNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -28,4 +28,4 @@ const createVenueNodes = (
   }));
 };
 
-export default createVenueNodes;
+export default buildVenueNodes;

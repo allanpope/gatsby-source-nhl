@@ -7,7 +7,7 @@ import { Position } from '../types/position';
 import { RosterItem } from '../types/roster';
 import positions from '../data/positions';
 
-const createPositionNodes = (
+const buildPositionNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -38,4 +38,4 @@ const createPositionNodes = (
   });
 };
 
-export default createPositionNodes;
+export default buildPositionNodes;

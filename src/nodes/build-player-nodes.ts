@@ -5,7 +5,7 @@ import { flatten } from 'lodash';
 import { Team } from '../types/team';
 import { RosterItem } from '../types/roster';
 
-const createPlayerNodes = (
+const buildPlayerNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -32,4 +32,4 @@ const createPlayerNodes = (
   return flatten(players);
 };
 
-export default createPlayerNodes;
+export default buildPlayerNodes;

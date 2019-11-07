@@ -4,7 +4,7 @@ import { groupBy } from 'lodash';
 
 import { Team } from '../types/team';
 
-const createConferenceNodes = (
+const buildConferenceNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: SourceNodesArgs,
 ) => {
@@ -29,4 +29,4 @@ const createConferenceNodes = (
   }));
 };
 
-export default createConferenceNodes;
+export default buildConferenceNodes;
