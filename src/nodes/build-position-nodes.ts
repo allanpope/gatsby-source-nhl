@@ -30,7 +30,7 @@ const buildPositionNodes = (
         createNodeId(rosterItem.person.id),
       ),
       internal: {
-        type: `NHLPosition`,
+        type: 'NHLPosition',
         content: JSON.stringify(position),
         contentDigest: createContentDigest(position),
       },

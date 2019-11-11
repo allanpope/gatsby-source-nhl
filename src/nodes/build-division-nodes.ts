@@ -21,7 +21,7 @@ const buildVenueNodes = (
       createNodeId(team.id),
     ),
     internal: {
-      type: `NHLDivision`,
+      type: 'NHLDivision',
       content: JSON.stringify(team.division),
       contentDigest: createContentDigest(team.division),
     },

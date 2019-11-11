@@ -22,7 +22,7 @@ const buildPlayerNodes = (
       team: createNodeId(team.id),
       position: position.name,
       internal: {
-        type: `NHLPlayer`,
+        type: 'NHLPlayer',
         content: JSON.stringify(person),
         contentDigest: createContentDigest(person),
       },

@@ -14,7 +14,7 @@ const buildFranchiseNodes = (
     teamName: team.franchise.teamName,
     team: createNodeId(team.id),
     internal: {
-      type: `NHLFranchise`,
+      type: 'NHLFranchise',
       content: JSON.stringify(team.franchise),
       contentDigest: createContentDigest(team.franchise),
     },

@@ -12,14 +12,14 @@ const buildVenueNodes = (
     externalId: get(team, 'venue.id'),
     name: team.venue.name,
     city: team.venue.city,
+    team: createNodeId(team.id),
     timeZone: {
       id: team.venue.timeZone.id,
       offset: team.venue.timeZone.offset,
       tz: team.venue.timeZone.tz,
     },
-    team: createNodeId(team.id),
     internal: {
-      type: `NHLVenue`,
+      type: 'NHLVenue',
       content: JSON.stringify(team.venue),
       contentDigest: createContentDigest(team.venue),
     },

@@ -26,7 +26,7 @@ const buildDivisionNodes = (
       },
     },
     internal: {
-      type: `NHLTeam`,
+      type: 'NHLTeam',
       content: JSON.stringify(team),
       contentDigest: createContentDigest(team),
     },

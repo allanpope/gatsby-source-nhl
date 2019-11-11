@@ -19,7 +19,7 @@ const buildConferenceNodes = (
       slug: slugify(key, { lower: true }),
       teams: value.map((team: Team) => createNodeId(team.id)),
       internal: {
-        type: `NHLConference`,
+        type: 'NHLConference',
         content: JSON.stringify(value),
         contentDigest: createContentDigest(value),
       },

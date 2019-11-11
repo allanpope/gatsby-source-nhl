@@ -14,6 +14,7 @@ describe('buildConferenceNodes', () => {
   });
 
   it('returns two objects representing each conference', () => {
+    // returning a object
     expect(result).toHaveLength(2);
   });
 
@@ -32,7 +33,7 @@ describe('buildConferenceNodes', () => {
       expect.objectContaining({
         id: expect.any(String),
         internal: {
-          type: expect.any(String),
+          type: 'NHLConference',
           content: expect.anything(),
           contentDigest: expect.anything(),
         },
