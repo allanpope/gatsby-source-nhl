@@ -11,17 +11,17 @@ const buildConferenceNodes = (
   const teamsGroupedByConference = groupBy(teams, 'conference.name');
   const nodes = [];
 
-  for (const [key, value] of Object.entries(teamsGroupedByConference)) {
+  for (const [conference, teams] of Object.entries(teamsGroupedByConference)) {
     nodes.push({
-      id: createNodeId(value[0].conference.id),
-      externalId: value[0].conference.id,
-      name: key,
-      slug: slugify(key, { lower: true }),
-      teams: value.map((team: Team) => createNodeId(team.id)),
+      id: createNodeId(teams[0].conference.id),
+      externalId: teams[0].conference.id,
+      name: conference,
+      slug: slugify(conference, { lower: true }),
+      teams: teams.map((team: Team) => createNodeId(team.id)),
       internal: {
         type: 'NHLConference',
-        content: JSON.stringify(value[0].conference),
-        contentDigest: createContentDigest(value[0].conference),
+        content: JSON.stringify(teams[0].conference),
+        contentDigest: createContentDigest(teams[0].conference),
       },
     });
   }
