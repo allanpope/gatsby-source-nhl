@@ -59,7 +59,7 @@ describe('buildTeamNodes', () => {
     expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(teams[0].id);
   });
 
-  it('returns a object with the required gatsby fields', () => {
+  it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
@@ -72,7 +72,11 @@ describe('buildTeamNodes', () => {
     );
   });
 
-  it('returns a object with team fields', () => {
+  it('returns the stringified value of the team', () => {
+    expect(result[0].internal.content).toEqual(JSON.stringify(teams[0]));
+  });
+
+  it('returns a object with team shape', () => {
     expect(result[1]).toEqual(
       expect.objectContaining({
         externalId: expect.any(Number),

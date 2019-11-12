@@ -63,20 +63,24 @@ describe('buildVenueNodes', () => {
     expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(teams[0].id);
   });
 
-  it('returns a object with the required gatsby fields', () => {
+  it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
         internal: {
           type: 'NHLVenue',
           content: expect.anything(),
-          contentDigest: expect.anything(),
+          contentDigest: 'mock-digest',
         },
       }),
     );
   });
 
-  it('returns a object with venue fields', () => {
+  it('returns the stringified value of of the team venue', () => {
+    expect(result[0].internal.content).toEqual(JSON.stringify(teams[0].venue));
+  });
+
+  it('returns objects with venue shape', () => {
     expect(result[1]).toEqual(
       expect.objectContaining({
         externalId: expect.any(Number),

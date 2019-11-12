@@ -30,20 +30,26 @@ describe('buildConferenceNodes', () => {
     );
   });
 
-  it('returns a object with the required gatsby fields', () => {
+  it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
         id: expect.any(String),
         internal: {
           type: 'NHLConference',
           content: expect.anything(),
-          contentDigest: expect.anything(),
+          contentDigest: 'mock-digest',
         },
       }),
     );
   });
 
-  it('returns a object with conference fields', () => {
+  it('returns the stringified value of the team conference', () => {
+    expect(result[0].internal.content).toEqual(
+      JSON.stringify(teams[0].conference),
+    );
+  });
+
+  it('returns a object with conference shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
         externalId: expect.any(Number),
