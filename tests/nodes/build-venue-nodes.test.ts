@@ -99,8 +99,4 @@ describe('buildVenueNodes', () => {
       }),
     );
   });
-
-  it('returns the team id for the venue', () => {
-    expect(result[0].team).toEqual(1);
-  });
 });
