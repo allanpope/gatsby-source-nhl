@@ -9,7 +9,7 @@ const buildVenueNodes = (
 ) => {
   return teams.map((team: Team) => ({
     id: createNodeId(team.venue.name),
-    externalId: get(team, 'venue.id'),
+    externalId: get(team, 'venue.id', null),
     name: team.venue.name,
     city: team.venue.city,
     team: createNodeId(team.id),
