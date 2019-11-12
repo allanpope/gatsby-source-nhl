@@ -13,9 +13,11 @@ describe('buildConferenceNodes', () => {
     result = buildConferenceNodes(teams, createNodeHelpers);
   });
 
-  it('returns two objects representing each conference', () => {
-    // returning a object
-    expect(result).toHaveLength(2);
+  it('returns a object for each conference', () => {
+    expect(result).toEqual([
+      expect.objectContaining({ name: 'Eastern' }),
+      expect.objectContaining({ name: 'Western' }),
+    ]);
   });
 
   it('calls createContentDigest for each conference', () => {
@@ -52,7 +54,7 @@ describe('buildConferenceNodes', () => {
     );
   });
 
-  it('creates a slug for each conference', () => {
+  it('creates a slug for each conference using the name', () => {
     expect(result).toEqual([
       expect.objectContaining({
         slug: 'eastern',
@@ -63,7 +65,7 @@ describe('buildConferenceNodes', () => {
     ]);
   });
 
-  it('creates a an array of ids for each team in a conference', () => {
+  it('returns an array of ids for each team in the conference', () => {
     expect(result[0].teams).toHaveLength(16);
     expect(result[1].teams).toHaveLength(15);
   });
