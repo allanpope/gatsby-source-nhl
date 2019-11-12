@@ -20,8 +20,8 @@ const buildConferenceNodes = (
       teams: value.map((team: Team) => createNodeId(team.id)),
       internal: {
         type: 'NHLConference',
-        content: JSON.stringify(value),
-        contentDigest: createContentDigest(value),
+        content: JSON.stringify(value[0].conference),
+        contentDigest: createContentDigest(value[0].conference),
       },
     });
   }
