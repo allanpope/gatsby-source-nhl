@@ -4,11 +4,14 @@ import { groupBy } from 'lodash';
 
 import { Team } from '../types/team';
 
-const buildVenueNodes = (
+const buildDivisionNodes = (
   teams: Team[],
   { createNodeId, createContentDigest }: NodePluginArgs,
 ): Array<NodeInput> => {
-  const teamsByDivisions = groupBy(teams, (team: Team) => team.division.name);
+  const teamsGroupedByDivisions = groupBy(
+    teams,
+    (team: Team) => team.division.name,
+  );
 
   return teams.map((team: Team) => ({
     id: createNodeId(team.division.id),
@@ -17,7 +20,7 @@ const buildVenueNodes = (
     nameShort: team.division.nameShort,
     abbreviation: team.division.abbreviation,
     slug: slugify(team.division.name, { lower: true }),
-    teams: teamsByDivisions[team.division.name].map(team =>
+    teams: teamsGroupedByDivisions[team.division.name].map(team =>
       createNodeId(team.id),
     ),
     internal: {
@@ -28,4 +31,4 @@ const buildVenueNodes = (
   }));
 };
 
-export default buildVenueNodes;
+export default buildDivisionNodes;
