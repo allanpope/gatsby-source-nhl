@@ -4,7 +4,7 @@ import teams from '../fixtures/teams';
 describe('buildTeamNodes', () => {
   let result: any;
   const createNodeHelpers: any = {
-    createNodeId: jest.fn(() => 1),
+    createNodeId: jest.fn(id => id),
     createContentDigest: jest.fn(() => 'mock-digest'),
   };
 

@@ -4,7 +4,7 @@ import teams from '../fixtures/teams';
 describe('buildVenueNodes', () => {
   let result: any;
   const createNodeHelpers: any = {
-    createNodeId: jest.fn(() => 1),
+    createNodeId: jest.fn(id => id),
     createContentDigest: jest.fn(() => 'mock-digest'),
   };
 
@@ -66,7 +66,7 @@ describe('buildVenueNodes', () => {
   it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
-        id: expect.any(Number),
+        id: expect.any(String),
         internal: {
           type: 'NHLVenue',
           content: expect.anything(),

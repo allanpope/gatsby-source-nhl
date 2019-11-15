@@ -4,7 +4,7 @@ import teams from '../fixtures/teams';
 describe('buildConferenceNodes', () => {
   let result: any;
   const createNodeHelpers: any = {
-    createNodeId: jest.fn(() => 'mock-id'),
+    createNodeId: jest.fn(id => id),
     createContentDigest: jest.fn(() => 'mock-digest'),
   };
 
@@ -33,7 +33,7 @@ describe('buildConferenceNodes', () => {
   it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
-        id: expect.any(String),
+        id: expect.any(Number),
         internal: {
           type: 'NHLConference',
           content: expect.anything(),
