@@ -49,7 +49,7 @@ describe('buildDivisionNodes', () => {
     );
   });
 
-  it('returns the stringified value of of the team division', () => {
+  it('returns the stringified value of the team division', () => {
     expect(result[0].internal.content).toEqual(
       JSON.stringify(teams[0].division),
     );

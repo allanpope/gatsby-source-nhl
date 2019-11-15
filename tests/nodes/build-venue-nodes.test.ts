@@ -76,7 +76,7 @@ describe('buildVenueNodes', () => {
     );
   });
 
-  it('returns the stringified value of of the team venue', () => {
+  it('returns the stringified value of the team venue', () => {
     expect(result[0].internal.content).toEqual(JSON.stringify(teams[0].venue));
   });
 
