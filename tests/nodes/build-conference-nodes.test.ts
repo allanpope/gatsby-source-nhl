@@ -13,7 +13,7 @@ describe('buildConferenceNodes', () => {
     result = buildConferenceNodes(teams, createNodeHelpers);
   });
 
-  fit('returns a object for each conference', () => {
+  it('returns a object for each conference', () => {
     expect(result).toEqual([
       expect.objectContaining({ name: 'Eastern' }),
       expect.objectContaining({ name: 'Western' }),
