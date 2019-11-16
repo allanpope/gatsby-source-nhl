@@ -1,5 +1,5 @@
 {
-  "name": "plugins",
+  "name": "gatsby-source-nhl",
   "version": "1.0.0",
   "description": "A Gatsby source plugin to load resources from the NHL API.",
   "main": "index.js",
@@ -16,6 +16,7 @@
   "keywords": [
     "gatsby",
     "gatsby-plugin",
+    "gatsby-source-plugin",
     "NHL"
   ],
   "author": "Allan Pope",
