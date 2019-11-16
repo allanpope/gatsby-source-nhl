@@ -1,8 +1,4 @@
-import { Team } from './team';
-
 export interface Franchise {
-  franchiseId: string;
+  franchiseId: number;
   teamName: string;
-  team: Team;
-  slug: string;
 }

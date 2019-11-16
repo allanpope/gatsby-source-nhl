@@ -1,31 +1,39 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
 import { Team } from '../types/team';
 
-const buildVenueNodes = (
+const buildDivisionNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
-  const teamsByDivisions = groupBy(teams, (team: Team) => team.division.name);
+  { createNodeId, createContentDigest }: NodePluginArgs,
+): Array<NodeInput> => {
+  const teamsGroupedByDivisions = groupBy(
+    teams,
+    (team: Team) => team.division.name,
+  );
+  const nodes = [];
 
-  return teams.map((team: Team) => ({
-    id: createNodeId(team.division.id),
-    externalId: team.division.id,
-    name: team.division.name,
-    nameShort: team.division.nameShort,
-    abbreviation: team.division.abbreviation,
-    slug: slugify(team.division.name, { lower: true }),
-    teams: teamsByDivisions[team.division.name].map(team =>
-      createNodeId(team.id),
-    ),
-    internal: {
-      type: `NHLDivision`,
-      content: JSON.stringify(team.division),
-      contentDigest: createContentDigest(team.division),
-    },
-  }));
+  for (const [division, teams] of Object.entries(teamsGroupedByDivisions)) {
+    nodes.push({
+      id: createNodeId(teams[0].division.id),
+      externalId: teams[0].division.id,
+      name: teams[0].division.name,
+      nameShort: teams[0].division.nameShort,
+      abbreviation: teams[0].division.abbreviation,
+      slug: slugify(teams[0].division.name, { lower: true }),
+      teams: teamsGroupedByDivisions[division].map(team =>
+        createNodeId(team.id),
+      ),
+      internal: {
+        type: 'NHLDivision',
+        content: JSON.stringify(teams[0].division),
+        contentDigest: createContentDigest(teams[0].division),
+      },
+    });
+  }
+
+  return nodes;
 };
 
-export default buildVenueNodes;
+export default buildDivisionNodes;

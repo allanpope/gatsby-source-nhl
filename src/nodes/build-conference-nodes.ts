@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
@@ -6,27 +6,27 @@ import { Team } from '../types/team';
 
 const buildConferenceNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
-  const teamsByConferences = groupBy(
-    teams,
-    (team: Team) => team.conference.name,
-  );
+  { createNodeId, createContentDigest }: NodePluginArgs,
+): Array<NodeInput> => {
+  const teamsGroupedByConference = groupBy(teams, 'conference.name');
+  const nodes = [];
 
-  return teams.map((team: Team) => ({
-    id: createNodeId(team.conference.id),
-    externalId: team.conference.id,
-    name: team.conference.name,
-    slug: slugify(team.conference.name, { lower: true }),
-    teams: teamsByConferences[team.conference.name].map((team: Team) =>
-      createNodeId(team.id),
-    ),
-    internal: {
-      type: `NHLConference`,
-      content: JSON.stringify(team.conference),
-      contentDigest: createContentDigest(team.conference),
-    },
-  }));
+  for (const [conference, teams] of Object.entries(teamsGroupedByConference)) {
+    nodes.push({
+      id: createNodeId(teams[0].conference.id),
+      externalId: teams[0].conference.id,
+      name: conference,
+      slug: slugify(conference, { lower: true }),
+      teams: teams.map((team: Team) => createNodeId(team.id)),
+      internal: {
+        type: 'NHLConference',
+        content: JSON.stringify(teams[0].conference),
+        contentDigest: createContentDigest(teams[0].conference),
+      },
+    });
+  }
+
+  return nodes;
 };
 
 export default buildConferenceNodes;

@@ -5,8 +5,7 @@ import { Franchise } from './franchise';
 import { Roster } from './roster';
 
 export interface Team {
-  id: string;
-  slug: string;
+  id: number;
   abbreviation: string;
   name: string;
   teamName: string;

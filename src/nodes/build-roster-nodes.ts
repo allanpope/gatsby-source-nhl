@@ -1,4 +1,4 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs, NodeInput } from 'gatsby';
 import { flatten } from 'lodash';
 
 import { Team } from '../types/team';
@@ -6,8 +6,8 @@ import { RosterItem } from '../types/roster';
 
 const buildRosterNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+  { createNodeId, createContentDigest }: NodePluginArgs,
+): Array<NodeInput> => {
   const rosterItems = teams.map((team: Team) =>
     team.roster.roster.map((rosterItem: RosterItem) => ({
       id: createNodeId(rosterItem.person.id),
@@ -17,7 +17,7 @@ const buildRosterNodes = (
       team: createNodeId(team.id),
       position: rosterItem.position.name,
       internal: {
-        type: `NHLRosterItem`,
+        type: 'NHLRosterItem',
         content: JSON.stringify(rosterItem),
         contentDigest: createContentDigest(rosterItem),
       },

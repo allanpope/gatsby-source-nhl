@@ -1,12 +1,12 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 
 import { Team } from '../types/team';
 
-const buildDivisionNodes = (
+const buildTeamNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+  { createNodeId, createContentDigest }: NodePluginArgs,
+): Array<NodeInput> => {
   return teams.map((team: Team) => ({
     id: createNodeId(team.id),
     externalId: team.id,
@@ -26,11 +26,11 @@ const buildDivisionNodes = (
       },
     },
     internal: {
-      type: `NHLTeam`,
+      type: 'NHLTeam',
       content: JSON.stringify(team),
       contentDigest: createContentDigest(team),
     },
   }));
 };
 
-export default buildDivisionNodes;
+export default buildTeamNodes;

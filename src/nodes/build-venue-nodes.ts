@@ -1,24 +1,25 @@
-import { SourceNodesArgs } from 'gatsby';
+import { NodePluginArgs, NodeInput } from 'gatsby';
+import { get } from 'lodash';
 
 import { Team } from '../types/team';
 
 const buildVenueNodes = (
   teams: Team[],
-  { createNodeId, createContentDigest }: SourceNodesArgs,
-) => {
+  { createNodeId, createContentDigest }: NodePluginArgs,
+): Array<NodeInput> => {
   return teams.map((team: Team) => ({
     id: createNodeId(team.venue.name),
-    externalId: team.venue.id,
+    externalId: get(team, 'venue.id', null), // NHL API missing ID's for some venues
     name: team.venue.name,
     city: team.venue.city,
+    team: createNodeId(team.id),
     timeZone: {
       id: team.venue.timeZone.id,
       offset: team.venue.timeZone.offset,
       tz: team.venue.timeZone.tz,
     },
-    team: createNodeId(team.id),
     internal: {
-      type: `NHLVenue`,
+      type: 'NHLVenue',
       content: JSON.stringify(team.venue),
       contentDigest: createContentDigest(team.venue),
     },

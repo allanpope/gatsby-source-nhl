@@ -1,12 +1,13 @@
-import { NodePluginArgs } from 'gatsby';
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
-  const { createTypes } = actions;
-
-  createTypes(`
+exports[`createSchemaCustomization calls #createTypes with the relational schema 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      "
     type NHLRosterItem implements Node {
       player: NHLPlayer @link,
-      position: NHLPosition @link(by: "name"),
+      position: NHLPosition @link(by: \\"name\\"),
       team: NHLTeam @link
     }
 
@@ -15,7 +16,7 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
     }
 
     type NHLPlayer implements Node {
-      position: NHLPosition @link(by: "name")
+      position: NHLPosition @link(by: \\"name\\")
       team: NHLTeam @link
     }
 
@@ -34,7 +35,14 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
     type NHLVenue implements Node {
       team: NHLTeam @link
     }
-  `);
-};
-
-export default createSchemaCustomization;
+  ",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

@@ -2,6 +2,10 @@
 
 This source plugin for Gatsby will pull data from the NHL and make it available in GraphQL queries.
 
+## NHL docs
+
+Drew Hynes has done a great job of documenting the publicly accessible portions [NHL API here.](https://gitlab.com/dword4/nhlapi).
+
 ## Installation
 
 ```sh
@@ -15,9 +19,9 @@ In `gatsby-config.js`:
 module.exports = {
   plugins: [
     {
-      resolve: "gatsby-source-nhl",
+      resolve: 'gatsby-source-nhl',
       options: {},
     },
   ],
-}
+};
 ```
