@@ -1,3 +1,4 @@
+// Generated from taking the teams key from the response of this request https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster
 const teams = [
   {
     id: 1,
