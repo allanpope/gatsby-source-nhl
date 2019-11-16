@@ -16,7 +16,7 @@ const sourceNodes = async (createNodeHelpers: NodePluginArgs) => {
   const teams: Team[] = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 
-  [
+  return [
     ...buildRosterNodes(teams, createNodeHelpers),
     ...buildPlayerNodes(teams, createNodeHelpers),
     ...buildVenueNodes(teams, createNodeHelpers),
