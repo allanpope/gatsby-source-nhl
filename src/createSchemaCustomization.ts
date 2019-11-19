@@ -35,6 +35,8 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
       team: NHLTeam @link
     }
   `);
+
+  return null;
 };
 
 export default createSchemaCustomization;

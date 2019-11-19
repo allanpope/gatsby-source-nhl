@@ -7,7 +7,6 @@
     "test": "jest",
     "build": "tsc",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build && npm test",
     "lint": "tsc --noEmit && eslint src/**/*.ts"
   },
   "files": [
