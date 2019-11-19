@@ -1,5 +1,5 @@
 
-![Build Status](https://github.com/allanpope/gatsby-source-nhl/workflows/ci/badge.svg)
+![Build Status](https://github.com/allanpope/gatsby-source-nhl/workflows/CI/badge.svg)
 
 
 This source plugin for Gatsby will pull data from the NHL and make it available in GraphQL queries.
