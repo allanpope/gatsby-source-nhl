@@ -1,5 +1,5 @@
 ![CI](https://github.com/allanpope/gatsby-source-nhl/workflows/CI/badge.svg)
-![semantic-release](https://github.com/allanpope/gatsby-source-nhl/workflows/release/badge.svg)
+![semantic-release](https://github.com/allanpope/gatsby-source-nhl/workflows/Release/badge.svg)
 
 This source plugin for Gatsby will pull data from the NHL and make it available in GraphQL queries.
 
