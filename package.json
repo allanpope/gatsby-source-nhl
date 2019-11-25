@@ -9,6 +9,9 @@
     "watch": "tsc --watch",
     "lint": "tsc --noEmit && eslint src/**/*.ts"
   },
+  "files": [
+    "/lib"
+  ],
   "keywords": [
     "gatsby",
     "gatsby-plugin",
