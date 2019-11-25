@@ -10,7 +10,8 @@
     "lint": "tsc --noEmit && eslint src/**/*.ts"
   },
   "files": [
-    "/lib"
+    "/lib",
+    "gatsby-node.js"
   ],
   "keywords": [
     "gatsby",
