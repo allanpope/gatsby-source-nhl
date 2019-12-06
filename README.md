@@ -48,3 +48,9 @@ You can query team nodes using the following:
   }
 }
 ```
+
+## Querying dynamic information
+
+You may run into cases where you want up to date information such as statistics on players and teams. To do this you would need to fetch data on the client, not at build time. You can read more about this [here](https://www.gatsbyjs.org/docs/client-data-fetching/).
+
+Most nodes have an attribute called `externalId` which you can query. This is the Id used by the NHL to identify records. You'll need to use this Id when querying parts of [their api](https://gitlab.com/dword4/nhlapi/blob/master/stats-api.md).
