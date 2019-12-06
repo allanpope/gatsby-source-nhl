@@ -15,8 +15,6 @@ The plugin creates nodes from portions of the NHL API. It allows you to query da
 
 This is an unofficial plugin and is using the [publicly accessible parts](https://gitlab.com/dword4/nhlapi) of the NHL API. There is nothing stopping the NHL to restrict the API or to push out break changes.
 
-This source plugin for Gatsby will pull data from the NHL and make it available in GraphQL queries.
-
 ## How to use
 
 ```javascript
