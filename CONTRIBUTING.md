@@ -25,21 +25,14 @@ Inside the `src` folder you'll see the folders `data` and `nodes`. The `data` fo
 
 ## Running the project
 
-- type script, how to compile
+- Navigate to the root directory in your terminal
+- Run `npm install`
+- Run `npm run watch` to compile the files
+- Run `npm run test` to run the test suite
 
 ## How to contribute
 
-- create pr
-- add tests
-- make sure everyworks
-- review
-
-## Add new nodes
-
-- where located
-- how it works
-
-## Release process
-
-- pr has to be up to date before merging
-- what process for it publishing( conventional commits) and flow
+- Make your changes on a branch
+- Create a pull request describing your changes/edits
+- Make sure you've added tests for your changes and the existing tests still pass
+- Ask for the pull request to be reviewed
