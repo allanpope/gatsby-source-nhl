@@ -2,7 +2,7 @@
   "name": "gatsby-source-nhl",
   "version": "0.0.0",
   "description": "A Gatsby source plugin to load resources from the NHL API.",
-  "main": "index.js",
+  "main": "gatsby-node.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
