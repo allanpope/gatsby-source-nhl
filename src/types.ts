@@ -1,12 +1,7 @@
 import { NodeInput } from 'gatsby';
 
-export type ConferenceNames = 'Eastern' | 'Western';
-
 interface Conference {
   name: string;
-}
-export interface ConferenceData extends Conference {
-  id: number;
 }
 
 interface Division {
@@ -15,13 +10,20 @@ interface Division {
   abbreviation: string;
 }
 
+interface Franchise {
+  teamName: string;
+}
+
+export interface ConferenceData extends Conference {
+  id: number;
+}
+
 export interface DivisionData extends Division {
   id: number;
 }
 
-export interface Franchise {
+export interface FranchiseData extends Franchise {
   franchiseId: number;
-  teamName: string;
 }
 
 export interface Person {
@@ -69,9 +71,9 @@ interface Team {
 export interface TeamData extends Team {
   id: number;
   venue: Venue;
-  division: Division;
+  division: DivisionData;
   conference: ConferenceData;
-  franchise: Franchise;
+  franchise: FranchiseData;
   roster: Roster;
 }
 
@@ -96,6 +98,12 @@ export interface DivisionNode extends Division, NodeInput {
   externalId: number;
   slug: string;
   teams: TeamNode[];
+}
+
+export interface FranchiseNode extends Franchise, NodeInput {
+  externalId: number;
+  slug: string;
+  team: TeamNode;
 }
 
 interface TimeZone {
