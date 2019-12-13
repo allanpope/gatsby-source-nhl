@@ -7,7 +7,7 @@ const buildTeamNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
 ): TeamNode[] => {
-  return teams.map((team: TeamData) => ({
+  return teams.map(team => ({
     id: createNodeId(team.id),
     externalId: team.id,
     name: team.name,

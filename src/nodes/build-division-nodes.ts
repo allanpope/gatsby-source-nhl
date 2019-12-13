@@ -8,10 +8,7 @@ const buildDivisionNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
 ): DivisionNode[] => {
-  const teamsGroupedByDivisions = groupBy(
-    teams,
-    (team: TeamData) => team.division.name,
-  );
+  const teamsGroupedByDivisions = groupBy(teams, team => team.division.name);
   const nodes = [];
 
   for (const [division, teams] of Object.entries(teamsGroupedByDivisions)) {

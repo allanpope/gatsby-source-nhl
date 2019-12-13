@@ -7,7 +7,7 @@ const buildFranchiseNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
 ): FranchiseNode[] => {
-  return teams.map((team: TeamData) => ({
+  return teams.map(team => ({
     id: createNodeId(team.franchise.franchiseId),
     slug: slugify(team.franchise.teamName, { lower: true }),
     externalId: team.franchise.franchiseId,

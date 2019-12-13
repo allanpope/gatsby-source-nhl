@@ -36,8 +36,10 @@ interface Venue {
   timeZone: TimeZone;
 }
 
-interface Roster {
-  roster: RosterItem[];
+interface Roster {}
+
+interface RosterItem {
+  jerseyNumber: string;
 }
 
 interface Team {
@@ -67,20 +69,18 @@ export interface FranchiseData extends Franchise {
   franchiseId: number;
 }
 
-export interface PlayerData extends Player {
-  id: number;
-}
-
 export interface PositionData extends Position {}
 
-export interface RosterData extends Roster {
-  id: number;
+export interface RosterItemData extends RosterItem {
+  position: PositionData;
+  person: {
+    id: number;
+    fullName: string;
+  };
 }
 
-export interface RosterItem {
-  jerseyNumber: string;
-  player: PlayerData;
-  position: Position;
+export interface RosterData extends Roster {
+  roster: RosterItemData[];
 }
 
 export interface TeamData extends Team {
@@ -124,8 +124,8 @@ export interface FranchiseNode extends Franchise, NodeInput {
 export interface PlayerNode extends Player, NodeInput {
   externalId: number;
   slug: string;
-  teams: TeamNode[];
-  position: Position;
+  team: TeamNode;
+  position: string;
   images: {
     action: string;
     headshot: string;
@@ -140,4 +140,10 @@ export interface PositionNode extends Position, NodeInput {
 export interface VenueNode extends Venue, NodeInput {
   externalId: number;
   team: TeamNode;
+}
+
+export interface RosterItemNode extends RosterItem, NodeInput {
+  externalId: number;
+  team: TeamNode;
+  player: PlayerNode;
 }
