@@ -52,7 +52,7 @@ interface Team {
 }
 
 export interface VenueData extends Venue {
-  id: number;
+  id?: number;
 }
 
 export interface ConferenceData extends Conference {
