@@ -1,7 +1,7 @@
 import { NodePluginArgs, NodeInput } from 'gatsby';
 import { get } from 'lodash';
 
-import { TeamData } from '../types/team';
+import { TeamData } from '../types';
 
 const buildVenueNodes = (
   teams: TeamData[],

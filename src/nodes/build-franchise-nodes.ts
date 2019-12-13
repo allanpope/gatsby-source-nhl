@@ -1,7 +1,7 @@
 import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 
-import { TeamData } from '../types/team';
+import { TeamData } from '../types';
 
 const buildFranchiseNodes = (
   teams: TeamData[],

@@ -2,7 +2,7 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { TeamData } from '../types/team';
+import { TeamData } from '../types';
 
 const buildDivisionNodes = (
   teams: TeamData[],

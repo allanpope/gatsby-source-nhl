@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-import { TeamData } from '../types/team';
+import { TeamData } from '../types';
 
 export const getTeamsData = async (): Promise<TeamData[]> => {
   try {

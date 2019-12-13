@@ -1,13 +1,13 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { TeamData } from '../types/team';
+import { TeamData, ConferenceNode, ConferenceNames } from '../types';
 
 const buildConferenceNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): NodeInput[] => {
+): ConferenceNode[] => {
   const teamsGroupedByConference = groupBy(teams, 'conference.name');
   const nodes = [];
 
@@ -15,7 +15,7 @@ const buildConferenceNodes = (
     nodes.push({
       id: createNodeId(teams[0].conference.id),
       externalId: teams[0].conference.id,
-      name: conference,
+      name: conference as ConferenceNames,
       slug: slugify(conference, { lower: true }),
       teams: teams.map((team: TeamData) => createNodeId(team.id)),
       internal: {

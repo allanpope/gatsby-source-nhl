@@ -1,8 +1,7 @@
 import { NodePluginArgs, NodeInput } from 'gatsby';
 import { flatten } from 'lodash';
 
-import { TeamData } from '../types/team';
-import { RosterItem } from '../types/roster';
+import { TeamData, RosterItem } from '../types';
 
 const buildRosterNodes = (
   teams: TeamData[],

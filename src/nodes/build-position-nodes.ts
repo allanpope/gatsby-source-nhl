@@ -2,9 +2,7 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import { flattenDeep } from 'lodash';
 import slugify from 'slugify';
 
-import { TeamData } from '../types/team';
-import { Position } from '../types/position';
-import { RosterItem } from '../types/roster';
+import { TeamData, Position, RosterItem } from '../types';
 import positions from '../data/positions';
 
 const buildPositionNodes = (

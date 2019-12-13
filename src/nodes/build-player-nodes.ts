@@ -2,8 +2,7 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { flatten } from 'lodash';
 
-import { TeamData } from '../types/team';
-import { RosterItem } from '../types/roster';
+import { TeamData, RosterItem } from '../types';
 
 const buildPlayerNodes = (
   teams: TeamData[],
