@@ -8,11 +8,6 @@ export interface Conference {
 export interface ConferenceData extends Conference {
   id: number;
 }
-export interface ConferenceNode extends Conference, NodeInput {
-  id: string;
-  externalId: number;
-  slug: string;
-}
 
 export interface Division {
   id: number;
@@ -87,6 +82,13 @@ export interface TeamNode extends Team, NodeInput {
       primaryDark: string;
     };
   };
+}
+
+export interface ConferenceNode extends Conference, NodeInput {
+  id: string;
+  externalId: number;
+  slug: string;
+  teams: TeamNode[];
 }
 
 interface TimeZone {
