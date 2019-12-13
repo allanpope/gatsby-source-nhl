@@ -24,16 +24,14 @@ interface Position {
   abbreviation: string;
 }
 
-interface TimeZone {
-  id: string;
-  offset: number;
-  tz: string;
-}
-
 interface Venue {
   name: string;
   city: string;
-  timeZone: TimeZone;
+  timeZone: {
+    id: string;
+    offset: number;
+    tz: string;
+  };
 }
 
 interface Roster {}
