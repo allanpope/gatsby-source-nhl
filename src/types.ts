@@ -2,18 +2,21 @@ import { NodeInput } from 'gatsby';
 
 export type ConferenceNames = 'Eastern' | 'Western';
 
-export interface Conference {
-  name: ConferenceNames;
+interface Conference {
+  name: string;
 }
 export interface ConferenceData extends Conference {
   id: number;
 }
 
-export interface Division {
+interface Division {
+  name: string;
+  nameShort: string;
+  abbreviation: string;
+}
+
+export interface DivisionData extends Division {
   id: number;
-  name: 'Metropolitan' | 'Atlantic' | 'Central' | 'Pacific';
-  nameShort: 'Metro' | 'ATL' | 'CEN' | 'PAC';
-  abbreviation: 'M' | 'A' | 'C' | 'P';
 }
 
 export interface Franchise {
@@ -73,7 +76,6 @@ export interface TeamData extends Team {
 }
 
 export interface TeamNode extends Team, NodeInput {
-  id: string;
   externalId: number;
   slug: string;
   images: {
@@ -85,7 +87,12 @@ export interface TeamNode extends Team, NodeInput {
 }
 
 export interface ConferenceNode extends Conference, NodeInput {
-  id: string;
+  externalId: number;
+  slug: string;
+  teams: TeamNode[];
+}
+
+export interface DivisionNode extends Division, NodeInput {
   externalId: number;
   slug: string;
   teams: TeamNode[];
