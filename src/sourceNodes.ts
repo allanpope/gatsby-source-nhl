@@ -10,10 +10,8 @@ import buildPositionNodes from './nodes/build-position-nodes';
 import buildFranchiseNodes from './nodes/build-franchise-nodes';
 import buildTeamNodes from './nodes/build-team-nodes';
 
-import { Team } from './types/team';
-
 const sourceNodes = async (createNodeHelpers: NodePluginArgs) => {
-  const teams: Team[] = await getTeamsData();
+  const teams = await getTeamsData();
   const { createNode } = createNodeHelpers.actions;
 
   return [

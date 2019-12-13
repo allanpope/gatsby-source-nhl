@@ -2,14 +2,14 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { flatten } from 'lodash';
 
-import { Team } from '../types/team';
+import { TeamData } from '../types/team';
 import { RosterItem } from '../types/roster';
 
 const buildPlayerNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  const players = teams.map((team: Team) =>
+): NodeInput[] => {
+  const players = teams.map((team: TeamData) =>
     team.roster.roster.map(({ person, position }: RosterItem) => ({
       id: createNodeId(person.id),
       externalId: person.id,

@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 
-import { Team } from '../types/team';
+import { TeamData } from '../types/team';
 
-export const getTeamsData = async (): Promise<Team[]> => {
+export const getTeamsData = async (): Promise<TeamData[]> => {
   try {
     const response = await fetch(
       'https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster',

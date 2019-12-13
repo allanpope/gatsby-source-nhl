@@ -6,7 +6,7 @@ import { TeamData, TeamNode } from '../types/team';
 const buildTeamNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<TeamNode> => {
+): TeamNode[] => {
   return teams.map((team: TeamData) => ({
     id: createNodeId(team.id),
     externalId: team.id,

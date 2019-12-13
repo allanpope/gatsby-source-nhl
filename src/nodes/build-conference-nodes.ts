@@ -2,12 +2,12 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { Team } from '../types/team';
+import { TeamData } from '../types/team';
 
 const buildConferenceNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
+): NodeInput[] => {
   const teamsGroupedByConference = groupBy(teams, 'conference.name');
   const nodes = [];
 
@@ -17,7 +17,7 @@ const buildConferenceNodes = (
       externalId: teams[0].conference.id,
       name: conference,
       slug: slugify(conference, { lower: true }),
-      teams: teams.map((team: Team) => createNodeId(team.id)),
+      teams: teams.map((team: TeamData) => createNodeId(team.id)),
       internal: {
         type: 'NHLConference',
         content: JSON.stringify(teams[0].conference),
