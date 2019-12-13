@@ -2,18 +2,18 @@ import { NodePluginArgs, NodeInput } from 'gatsby';
 import { flattenDeep } from 'lodash';
 import slugify from 'slugify';
 
-import { TeamData, Position, RosterItem } from '../types';
+import { TeamData, PositionData, PositionNode, RosterItem } from '../types';
 import positions from '../data/positions';
 
 const buildPositionNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): NodeInput[] => {
+): PositionNode[] => {
   const allRosterItems: RosterItem[] = flattenDeep(
     teams.map((team: TeamData) => team.roster.roster),
   );
 
-  return positions.map((position: Position) => {
+  return positions.map((position: PositionData) => {
     const filteredRosterItems = allRosterItems.filter((item: RosterItem) => {
       return item.position.name === position.name;
     });

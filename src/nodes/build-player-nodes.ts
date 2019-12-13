@@ -1,29 +1,29 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { flatten } from 'lodash';
 
-import { TeamData, RosterItem } from '../types';
+import { TeamData, RosterItem, PlayerNode } from '../types';
 
 const buildPlayerNodes = (
   teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): NodeInput[] => {
+): PlayerNode[] => {
   const players = teams.map((team: TeamData) =>
-    team.roster.roster.map(({ person, position }: RosterItem) => ({
-      id: createNodeId(person.id),
-      externalId: person.id,
-      fullName: person.fullName,
-      slug: slugify(person.fullName, { lower: true }),
+    team.roster.roster.map(({ player, position }: RosterItem) => ({
+      id: createNodeId(player.id),
+      externalId: player.id,
+      fullName: player.fullName,
+      slug: slugify(player.fullName, { lower: true }),
       images: {
-        headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${person.id}@3x.jpg`,
-        action: `https://nhl.bamcontent.com/images/actionshots/${person.id}@3x.jpg`,
+        headshot: `https://nhl.bamcontent.com/images/headshots/current/168x168/${player.id}@3x.jpg`,
+        action: `https://nhl.bamcontent.com/images/actionshots/${player.id}@3x.jpg`,
       },
       team: createNodeId(team.id),
       position: position.name,
       internal: {
         type: 'NHLPlayer',
-        content: JSON.stringify(person),
-        contentDigest: createContentDigest(person),
+        content: JSON.stringify(player),
+        contentDigest: createContentDigest(player),
       },
     })),
   );

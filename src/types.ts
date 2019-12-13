@@ -14,47 +14,30 @@ interface Franchise {
   teamName: string;
 }
 
-export interface ConferenceData extends Conference {
-  id: number;
-}
-
-export interface DivisionData extends Division {
-  id: number;
-}
-
-export interface FranchiseData extends Franchise {
-  franchiseId: number;
-}
-
-export interface Person {
-  id: number;
+interface Player {
   fullName: string;
 }
 
-export interface Position {
+interface Position {
   name: string;
   type: string;
   abbreviation: string;
 }
 
-export interface Roster {
+interface TimeZone {
+  id: string;
+  offset: number;
+  tz: string;
+}
+
+interface Venue {
+  name: string;
+  city: string;
+  timeZone: TimeZone;
+}
+
+interface Roster {
   roster: RosterItem[];
-}
-
-export interface RosterItem {
-  jerseyNumber: string;
-  person: Person;
-  position: Position;
-}
-
-export interface Roster {
-  roster: RosterItem[];
-}
-
-export interface RosterItem {
-  jerseyNumber: string;
-  person: Person;
-  position: Position;
 }
 
 interface Team {
@@ -68,13 +51,45 @@ interface Team {
   active: boolean;
 }
 
+export interface VenueData extends Venue {
+  id: number;
+}
+
+export interface ConferenceData extends Conference {
+  id: number;
+}
+
+export interface DivisionData extends Division {
+  id: number;
+}
+
+export interface FranchiseData extends Franchise {
+  franchiseId: number;
+}
+
+export interface PlayerData extends Player {
+  id: number;
+}
+
+export interface PositionData extends Position {}
+
+export interface RosterData extends Roster {
+  id: number;
+}
+
+export interface RosterItem {
+  jerseyNumber: string;
+  player: PlayerData;
+  position: Position;
+}
+
 export interface TeamData extends Team {
   id: number;
-  venue: Venue;
+  venue: VenueData;
   division: DivisionData;
   conference: ConferenceData;
   franchise: FranchiseData;
-  roster: Roster;
+  roster: RosterData;
 }
 
 export interface TeamNode extends Team, NodeInput {
@@ -106,15 +121,23 @@ export interface FranchiseNode extends Franchise, NodeInput {
   team: TeamNode;
 }
 
-interface TimeZone {
-  id: string;
-  offset: number;
-  tz: string;
+export interface PlayerNode extends Player, NodeInput {
+  externalId: number;
+  slug: string;
+  teams: TeamNode[];
+  position: Position;
+  images: {
+    action: string;
+    headshot: string;
+  };
 }
 
-export interface Venue {
-  id?: number;
-  name: string;
-  city: string;
-  timeZone: TimeZone;
+export interface PositionNode extends Position, NodeInput {
+  slug: string;
+  players: PlayerNode[];
+}
+
+export interface VenueNode extends Venue, NodeInput {
+  externalId: number;
+  team: TeamNode;
 }
