@@ -9,7 +9,7 @@ const buildVenueNodes = (
 ): VenueNode[] => {
   return teams.map(team => ({
     id: createNodeId(team.venue.name),
-    externalId: get(team, 'venue.id', null), // NHL API missing ID's for some venues
+    externalId: get(team, 'venue.id', null),
     name: team.venue.name,
     city: team.venue.city,
     team: createNodeId(team.id),
