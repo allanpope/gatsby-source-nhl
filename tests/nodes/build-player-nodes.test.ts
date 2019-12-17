@@ -36,6 +36,12 @@ describe('buildPlayerNodes', () => {
     );
   });
 
+  it('calls createNodeId with the position name', () => {
+    expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(
+      teams[0].roster.roster[0].position.name,
+    );
+  });
+
   it('calls createNodeId with the team id', () => {
     expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(teams[0].id);
   });

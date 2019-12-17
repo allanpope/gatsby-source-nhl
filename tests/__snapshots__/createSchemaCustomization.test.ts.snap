@@ -5,9 +5,9 @@ exports[`createSchemaCustomization calls #createTypes with the relational schema
   "calls": Array [
     Array [
       "
-    type NHLRosterItem implements Node {
+    type NHLRoster implements Node {
       player: NHLPlayer @link,
-      position: NHLPosition @link(by: \\"name\\"),
+      position: NHLPosition @link,
       team: NHLTeam @link
     }
 
@@ -16,7 +16,7 @@ exports[`createSchemaCustomization calls #createTypes with the relational schema
     }
 
     type NHLPlayer implements Node {
-      position: NHLPosition @link(by: \\"name\\")
+      position: NHLPosition @link
       team: NHLTeam @link
     }
 

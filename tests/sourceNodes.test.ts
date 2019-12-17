@@ -2,8 +2,8 @@ import { NodePluginArgs } from 'gatsby';
 
 import sourceNodes from '../src/sourceNodes';
 import { getTeamsData } from '../src/data/nhl-api';
-import buildRosterNodes from '../src/nodes/build-roster-nodes';
 import buildPlayerNodes from '../src/nodes/build-player-nodes';
+import buildRosterNodes from '../src/nodes/build-roster-nodes';
 import buildVenueNodes from '../src/nodes/build-venue-nodes';
 import buildDivisionNodes from '../src/nodes/build-division-nodes';
 import buildConferenceNodes from '../src/nodes/build-conference-nodes';
