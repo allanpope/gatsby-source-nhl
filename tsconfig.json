@@ -3,7 +3,7 @@
   "exclude": ["node_modules", "lib"],
   "compilerOptions": {
     "strict": true,
-    "target": "es2019",
+    "target": "esnext",
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "module": "commonjs",
