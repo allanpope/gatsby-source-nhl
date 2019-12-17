@@ -1,13 +1,13 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 
-import { Team } from '../types/team';
+import { TeamData, TeamNode } from '../types';
 
 const buildTeamNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  return teams.map((team: Team) => ({
+): TeamNode[] => {
+  return teams.map(team => ({
     id: createNodeId(team.id),
     externalId: team.id,
     name: team.name,

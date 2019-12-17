@@ -37,12 +37,18 @@ describe('buildRosterNodes', () => {
     expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(teams[0].id);
   });
 
+  it('calls createNodeId with the position name', () => {
+    expect(createNodeHelpers.createNodeId).toHaveBeenCalledWith(
+      teams[0].roster.roster[0].position.name,
+    );
+  });
+
   it('returns objects with the required gatsby shape', () => {
     expect(result[0]).toEqual(
       expect.objectContaining({
         id: expect.any(Number),
         internal: {
-          type: 'NHLRosterItem',
+          type: 'NHLRoster',
           content: expect.anything(),
           contentDigest: 'mock-digest',
         },

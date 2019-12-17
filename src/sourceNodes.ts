@@ -10,24 +10,27 @@ import buildPositionNodes from './nodes/build-position-nodes';
 import buildFranchiseNodes from './nodes/build-franchise-nodes';
 import buildTeamNodes from './nodes/build-team-nodes';
 
-import { Team } from './types/team';
-
 const sourceNodes = async (createNodeHelpers: NodePluginArgs) => {
-  const teams: Team[] = await getTeamsData();
-  const { createNode } = createNodeHelpers.actions;
+  try {
+    const teams = await getTeamsData();
+    const { createNode } = createNodeHelpers.actions;
 
-  return [
-    ...buildRosterNodes(teams, createNodeHelpers),
-    ...buildPlayerNodes(teams, createNodeHelpers),
-    ...buildVenueNodes(teams, createNodeHelpers),
-    ...buildDivisionNodes(teams, createNodeHelpers),
-    ...buildConferenceNodes(teams, createNodeHelpers),
-    ...buildPositionNodes(teams, createNodeHelpers),
-    ...buildFranchiseNodes(teams, createNodeHelpers),
-    ...buildTeamNodes(teams, createNodeHelpers),
-  ].map(node => {
-    createNode(node);
-  });
+    return [
+      ...buildRosterNodes(teams, createNodeHelpers),
+      ...buildPlayerNodes(teams, createNodeHelpers),
+      ...buildVenueNodes(teams, createNodeHelpers),
+      ...buildDivisionNodes(teams, createNodeHelpers),
+      ...buildConferenceNodes(teams, createNodeHelpers),
+      ...buildPositionNodes(teams, createNodeHelpers),
+      ...buildFranchiseNodes(teams, createNodeHelpers),
+      ...buildTeamNodes(teams, createNodeHelpers),
+    ].map(node => {
+      createNode(node);
+    });
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
 export default sourceNodes;

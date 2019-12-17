@@ -1,7 +1,7 @@
 import buildPositionNodes from '../../src/nodes/build-position-nodes';
 import teams from '../fixtures/teams';
 import positions from '../../src/data/positions';
-import { Position } from '../../src/types/position';
+import { PositionData } from '../../src/types';
 
 describe('buildPositionNodes', () => {
   let result: any;
@@ -92,7 +92,9 @@ describe('buildPositionNodes', () => {
     let goalie: any;
 
     beforeEach(() => {
-      goalie = result.find((position: Position) => position.name === 'Goalie');
+      goalie = result.find(
+        (position: PositionData) => position.name === 'Goalie',
+      );
     });
 
     it('returns goalie player ids', () => {
@@ -113,7 +115,7 @@ describe('buildPositionNodes', () => {
 
     beforeEach(() => {
       defenseman = result.find(
-        (position: Position) => position.name === 'Defenseman',
+        (position: PositionData) => position.name === 'Defenseman',
       );
     });
 
@@ -134,7 +136,9 @@ describe('buildPositionNodes', () => {
     let center: any;
 
     beforeEach(() => {
-      center = result.find((position: Position) => position.name === 'Center');
+      center = result.find(
+        (position: PositionData) => position.name === 'Center',
+      );
     });
 
     it('returns center player ids', () => {
@@ -155,7 +159,7 @@ describe('buildPositionNodes', () => {
 
     beforeEach(() => {
       leftWing = result.find(
-        (position: Position) => position.name === 'Left Wing',
+        (position: PositionData) => position.name === 'Left Wing',
       );
     });
 
@@ -177,7 +181,7 @@ describe('buildPositionNodes', () => {
 
     beforeEach(() => {
       rightWing = result.find(
-        (position: Position) => position.name === 'Right Wing',
+        (position: PositionData) => position.name === 'Right Wing',
       );
     });
 

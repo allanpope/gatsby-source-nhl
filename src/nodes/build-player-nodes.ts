@@ -1,16 +1,15 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { flatten } from 'lodash';
 
-import { Team } from '../types/team';
-import { RosterItem } from '../types/roster';
+import { TeamData, PlayerNode } from '../types';
 
 const buildPlayerNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  const players = teams.map((team: Team) =>
-    team.roster.roster.map(({ person, position }: RosterItem) => ({
+): PlayerNode[] => {
+  const players = teams.map(team =>
+    team.roster.roster.map(({ person, position }) => ({
       id: createNodeId(person.id),
       externalId: person.id,
       fullName: person.fullName,
@@ -20,7 +19,7 @@ const buildPlayerNodes = (
         action: `https://nhl.bamcontent.com/images/actionshots/${person.id}@3x.jpg`,
       },
       team: createNodeId(team.id),
-      position: position.name,
+      position: createNodeId(position.name),
       internal: {
         type: 'NHLPlayer',
         content: JSON.stringify(person),

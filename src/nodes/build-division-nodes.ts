@@ -1,17 +1,14 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 import { groupBy } from 'lodash';
 
-import { Team } from '../types/team';
+import { TeamData, DivisionNode } from '../types';
 
 const buildDivisionNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  const teamsGroupedByDivisions = groupBy(
-    teams,
-    (team: Team) => team.division.name,
-  );
+): DivisionNode[] => {
+  const teamsGroupedByDivisions = groupBy(teams, team => team.division.name);
   const nodes = [];
 
   for (const [division, teams] of Object.entries(teamsGroupedByDivisions)) {

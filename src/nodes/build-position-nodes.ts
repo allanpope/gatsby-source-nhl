@@ -1,22 +1,20 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import { flattenDeep } from 'lodash';
 import slugify from 'slugify';
 
-import { Team } from '../types/team';
-import { Position } from '../types/position';
-import { RosterItem } from '../types/roster';
+import { TeamData, PositionData, PositionNode } from '../types';
 import positions from '../data/positions';
 
 const buildPositionNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  const allRosterItems: RosterItem[] = flattenDeep(
-    teams.map((team: Team) => team.roster.roster),
+): PositionNode[] => {
+  const allRosterItems = flattenDeep(
+    teams.map((team: TeamData) => team.roster.roster),
   );
 
-  return positions.map((position: Position) => {
-    const filteredRosterItems = allRosterItems.filter((item: RosterItem) => {
+  return positions.map((position: PositionData) => {
+    const filteredRosterItems = allRosterItems.filter(item => {
       return item.position.name === position.name;
     });
 
@@ -26,7 +24,7 @@ const buildPositionNodes = (
       type: position.type,
       abbreviation: position.abbreviation,
       slug: slugify(position.name, { lower: true }),
-      players: filteredRosterItems.map((rosterItem: RosterItem) =>
+      players: filteredRosterItems.map(rosterItem =>
         createNodeId(rosterItem.person.id),
       ),
       internal: {

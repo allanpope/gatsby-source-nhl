@@ -1,13 +1,13 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import slugify from 'slugify';
 
-import { Team } from '../types/team';
+import { TeamData, FranchiseNode } from '../types';
 
 const buildFranchiseNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  return teams.map((team: Team) => ({
+): FranchiseNode[] => {
+  return teams.map(team => ({
     id: createNodeId(team.franchise.franchiseId),
     slug: slugify(team.franchise.teamName, { lower: true }),
     externalId: team.franchise.franchiseId,

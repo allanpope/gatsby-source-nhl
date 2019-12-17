@@ -1,30 +1,28 @@
-import { NodePluginArgs, NodeInput } from 'gatsby';
+import { NodePluginArgs } from 'gatsby';
 import { flatten } from 'lodash';
 
-import { Team } from '../types/team';
-import { RosterItem } from '../types/roster';
+import { TeamData, RosterItemNode } from '../types';
 
 const buildRosterNodes = (
-  teams: Team[],
+  teams: TeamData[],
   { createNodeId, createContentDigest }: NodePluginArgs,
-): Array<NodeInput> => {
-  const rosterItems = teams.map((team: Team) =>
-    team.roster.roster.map((rosterItem: RosterItem) => ({
+): RosterItemNode[] => {
+  const roster = teams.map(team =>
+    team.roster.roster.map(rosterItem => ({
       id: createNodeId(rosterItem.person.id),
       externalId: rosterItem.person.id,
       jerseyNumber: rosterItem.jerseyNumber,
       player: createNodeId(rosterItem.person.id),
       team: createNodeId(team.id),
-      position: rosterItem.position.name,
+      position: createNodeId(rosterItem.position.name),
       internal: {
-        type: 'NHLRosterItem',
+        type: 'NHLRoster',
         content: JSON.stringify(rosterItem),
         contentDigest: createContentDigest(rosterItem),
       },
     })),
   );
-
-  return flatten(rosterItems);
+  return flatten(roster);
 };
 
 export default buildRosterNodes;
