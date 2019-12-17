@@ -136,7 +136,7 @@ export interface PositionNode extends Position, NodeInput {
 }
 
 export interface VenueNode extends Venue, NodeInput {
-  externalId: number;
+  externalId?: number; // NHL API missing ID's for some venues
   team: TeamNode;
 }
 
