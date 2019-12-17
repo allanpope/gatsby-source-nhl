@@ -144,4 +144,5 @@ export interface RosterItemNode extends RosterItem, NodeInput {
   externalId: number;
   team: TeamNode;
   player: PlayerNode;
+  position: PositionNode;
 }

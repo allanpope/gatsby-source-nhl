@@ -14,7 +14,7 @@ const buildRosterNodes = (
       jerseyNumber: rosterItem.jerseyNumber,
       player: createNodeId(rosterItem.person.id),
       team: createNodeId(team.id),
-      position: rosterItem.position.name,
+      position: createNodeId(rosterItem.position.name),
       internal: {
         type: 'NHLRoster',
         content: JSON.stringify(rosterItem),

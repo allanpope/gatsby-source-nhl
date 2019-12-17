@@ -19,7 +19,7 @@ const buildPlayerNodes = (
         action: `https://nhl.bamcontent.com/images/actionshots/${person.id}@3x.jpg`,
       },
       team: createNodeId(team.id),
-      position: position.name,
+      position: createNodeId(position.name),
       internal: {
         type: 'NHLPlayer',
         content: JSON.stringify(person),

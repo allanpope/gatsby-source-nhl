@@ -6,7 +6,7 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
   createTypes(`
     type NHLRoster implements Node {
       player: NHLPlayer @link,
-      position: NHLPosition @link(by: "name"),
+      position: NHLPosition @link,
       team: NHLTeam @link
     }
 
@@ -15,7 +15,7 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
     }
 
     type NHLPlayer implements Node {
-      position: NHLPosition @link(by: "name")
+      position: NHLPosition @link
       team: NHLTeam @link
     }
 
