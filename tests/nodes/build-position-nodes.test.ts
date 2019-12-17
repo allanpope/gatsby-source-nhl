@@ -15,7 +15,7 @@ describe('buildPositionNodes', () => {
     result = buildPositionNodes(teams, createNodeHelpers);
   });
 
-  it('returns a object for each positon', () => {
+  fit('returns a object for each positon', () => {
     expect(result).toEqual([
       expect.objectContaining({ name: 'Goalie' }),
       expect.objectContaining({ name: 'Defenseman' }),
