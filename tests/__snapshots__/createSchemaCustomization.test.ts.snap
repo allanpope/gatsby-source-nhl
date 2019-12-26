@@ -35,6 +35,10 @@ exports[`createSchemaCustomization calls #createTypes with the relational schema
     type NHLVenue implements Node {
       team: NHLTeam @link
     }
+
+     type NHLTeam implements Node {
+      venue: NHLVenue @link
+    }
   ",
     ],
   ],

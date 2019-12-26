@@ -34,6 +34,10 @@ const createSchemaCustomization = ({ actions }: NodePluginArgs) => {
     type NHLVenue implements Node {
       team: NHLTeam @link
     }
+
+     type NHLTeam implements Node {
+      venue: NHLVenue @link
+    }
   `);
 
   return null;
