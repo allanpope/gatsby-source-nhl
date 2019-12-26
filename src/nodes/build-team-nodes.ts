@@ -18,6 +18,7 @@ const buildTeamNodes = (
     shortName: team.shortName,
     officialSiteUrl: team.officialSiteUrl,
     active: team.active,
+    venue: createNodeId(team.venue.name),
     slug: slugify(team.name, { lower: true }),
     images: {
       logo: {

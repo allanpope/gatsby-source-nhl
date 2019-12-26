@@ -89,6 +89,7 @@ describe('buildTeamNodes', () => {
         officialSiteUrl: expect.any(String),
         active: expect.any(Boolean),
         slug: expect.any(String),
+        venue: expect.any(String),
         images: {
           logo: {
             primaryLight: expect.any(String),
