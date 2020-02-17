@@ -123,7 +123,7 @@ export interface PlayerNode extends Player, NodeInput {
   externalId: number;
   slug: string;
   team: TeamNode;
-  position: string;
+  position: PositionNode;
   images: {
     action: string;
     headshot: string;
